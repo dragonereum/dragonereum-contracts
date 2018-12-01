@@ -1,0 +1,27 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+node_modules
+
+# misc
+.DS_Store
+npm-debug.log
+.truffle-solidity-loader
+.idea
+
+# Developer env
+.env.local
+
+# Log files
+*.log
+
+# Contracts
+build_contracts
+test_scripts
+builds
+
+# flats
+flat
+scripts/flattener.pl
+.vscode/settings.json
+test/helper.test.js
