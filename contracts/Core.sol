@@ -26,6 +26,22 @@ contract Core is Upgradable {
     DragonLeaderboard leaderboard;
     Nest nest;
 
+    uint256 public peacefulSkillCooldown;
+    mapping (uint256 => uint256) public lastPeacefulSkillsUsageDates;
+
+    constructor() public {
+        peacefulSkillCooldown = 14 days;
+    }
+
+    function _checkPossibilityOfUsingSpecialPeacefulSkill(uint256 _id) internal view {
+        uint256 _availableFrom = lastPeacefulSkillsUsageDates[_id].add(peacefulSkillCooldown);
+        require(_availableFrom <= now, "special peaceful skill is not yet available");
+    }
+
+    function setCooldown(uint256 _value) external onlyOwner {
+        peacefulSkillCooldown = _value;
+    }
+
     function _max(uint16 lth, uint16 rth) internal pure returns (uint16) {
         if (lth > rth) {
             return lth;
@@ -142,7 +158,9 @@ contract Core is Upgradable {
         uint256 _id,
         uint256 _target
     ) external onlyController {
+        _checkPossibilityOfUsingSpecialPeacefulSkill(_id);
         dragonCore.useSpecialPeacefulSkill(_sender, _id, _target);
+        lastPeacefulSkillsUsageDates[_id] = now;
     }
 
     function resetDragonBuffs(uint256 _id) external onlyController {
