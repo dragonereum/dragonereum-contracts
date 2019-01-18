@@ -1,0 +1,201 @@
+{
+  "contractName": "DragonGenetics",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_newDependencies",
+          "type": "address[]"
+        }
+      ],
+      "name": "setExternalDependencies",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x65fc1253"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x8da5cb5b"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getInternalDependencies",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xb75c4f80"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getExternalDependencies",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xe6458f6e"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xf2fde38b"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event",
+      "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_parents",
+          "type": "uint256[2]"
+        },
+        {
+          "name": "_momGenome",
+          "type": "uint256[4]"
+        },
+        {
+          "name": "_dadGenome",
+          "type": "uint256[4]"
+        },
+        {
+          "name": "_seed",
+          "type": "uint256"
+        }
+      ],
+      "name": "createGenome",
+      "outputs": [
+        {
+          "name": "genome",
+          "type": "uint256[4]"
+        },
+        {
+          "name": "dragonTypes",
+          "type": "uint8[11]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x29e3ebe4"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_dragonType",
+          "type": "uint8"
+        },
+        {
+          "name": "_seed_",
+          "type": "uint256"
+        }
+      ],
+      "name": "createGenomeForGenesis",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256[4]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x574f0005"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_newDependencies",
+          "type": "address[]"
+        }
+      ],
+      "name": "setInternalDependencies",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x69c0ad93"
+    }
+  ],
+  "networks": {
+    "1": {
+      "events": {
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event",
+          "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+        }
+      },
+      "links": {},
+      "address": "0x0163F2AeCc6263dfb2B9b01e9E76F93D4cc9862e",
+      "transactionHash": "0x7e748d7134ca28670a01d2ea4d4a0257d59885aa6730fc2f5d7feb6baec5d483"
+    }
+  },
+  "updatedAt": "2018-11-28T21:04:49.386Z"
+}

@@ -1,0 +1,480 @@
+{
+  "contractName": "MainBattle",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "unpause",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x3f4ba83a"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "paused",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x5c975abb"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_newDependencies",
+          "type": "address[]"
+        }
+      ],
+      "name": "setExternalDependencies",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x65fc1253"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "pause",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x8456cb59"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x8da5cb5b"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getInternalDependencies",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xb75c4f80"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getExternalDependencies",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xe6458f6e"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xf2fde38b"
+    },
+    {
+      "anonymous": false,
+      "inputs": [],
+      "name": "Pause",
+      "type": "event",
+      "signature": "0x6985a02210a168e66602d3235cb6db0e70f92b3ba4d376a33c0f3d9434bff625"
+    },
+    {
+      "anonymous": false,
+      "inputs": [],
+      "name": "Unpause",
+      "type": "event",
+      "signature": "0x7805862f689e2f13df9f062ff482ad3ad112aca9e0847911ed832e158c525b33"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event",
+      "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "matchOpponents",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256[6]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x5cc53bc7"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256"
+        },
+        {
+          "name": "_opponentId",
+          "type": "uint256"
+        },
+        {
+          "name": "_tactics",
+          "type": "uint8[2]"
+        }
+      ],
+      "name": "battle",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x1c203612"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_dragonId",
+          "type": "uint256"
+        },
+        {
+          "name": "_tactics",
+          "type": "uint8[2]"
+        },
+        {
+          "name": "_isGold",
+          "type": "bool"
+        },
+        {
+          "name": "_bet",
+          "type": "uint256"
+        },
+        {
+          "name": "_counter",
+          "type": "uint16"
+        }
+      ],
+      "name": "createGladiatorBattle",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function",
+      "signature": "0x03ae8508"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_battleId",
+          "type": "uint256"
+        },
+        {
+          "name": "_dragonId",
+          "type": "uint256"
+        },
+        {
+          "name": "_tactics",
+          "type": "uint8[2]"
+        }
+      ],
+      "name": "applyForGladiatorBattle",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function",
+      "signature": "0xfec5f0d2"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_battleId",
+          "type": "uint256"
+        },
+        {
+          "name": "_opponentId",
+          "type": "uint256"
+        },
+        {
+          "name": "_applicantsHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "chooseOpponentForGladiatorBattle",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x278c2977"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_battleId",
+          "type": "uint256"
+        },
+        {
+          "name": "_applicantsHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "autoSelectOpponentForGladiatorBattle",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x84680fc2"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_gladiatorBattleId",
+          "type": "uint256"
+        }
+      ],
+      "name": "startGladiatorBattle",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xc26d7daa"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_battleId",
+          "type": "uint256"
+        },
+        {
+          "name": "_applicantsHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "cancelGladiatorBattle",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x82b7fa4e"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_battleId",
+          "type": "uint256"
+        }
+      ],
+      "name": "returnBetFromGladiatorBattle",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xa510fd2b"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_battleId",
+          "type": "uint256"
+        }
+      ],
+      "name": "addTimeForOpponentSelectForGladiatorBattle",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x9e6b0faf"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_battleId",
+          "type": "uint256"
+        }
+      ],
+      "name": "updateBlockNumberOfGladiatorBattle",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x78517536"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_battleId",
+          "type": "uint256"
+        },
+        {
+          "name": "_willCreatorWin",
+          "type": "bool"
+        },
+        {
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "placeSpectatorBetOnGladiatorBattle",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function",
+      "signature": "0x690973b6"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_battleId",
+          "type": "uint256"
+        }
+      ],
+      "name": "removeSpectatorBetFromGladiatorBattle",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x7c45c98a"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_battleId",
+          "type": "uint256"
+        }
+      ],
+      "name": "requestSpectatorRewardForGladiatorBattle",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x3721a634"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_newDependencies",
+          "type": "address[]"
+        }
+      ],
+      "name": "setInternalDependencies",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x69c0ad93"
+    }
+  ],
+  "networks": {
+    "1": {
+      "events": {
+        "0x6985a02210a168e66602d3235cb6db0e70f92b3ba4d376a33c0f3d9434bff625": {
+          "anonymous": false,
+          "inputs": [],
+          "name": "Pause",
+          "type": "event",
+          "signature": "0x6985a02210a168e66602d3235cb6db0e70f92b3ba4d376a33c0f3d9434bff625"
+        },
+        "0x7805862f689e2f13df9f062ff482ad3ad112aca9e0847911ed832e158c525b33": {
+          "anonymous": false,
+          "inputs": [],
+          "name": "Unpause",
+          "type": "event",
+          "signature": "0x7805862f689e2f13df9f062ff482ad3ad112aca9e0847911ed832e158c525b33"
+        },
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event",
+          "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+        }
+      },
+      "links": {},
+      "address": "0x68ed06aF5989e05bC4aA510B44DC6d003e225187",
+      "transactionHash": "0x1e16a4118481f195dbf99d7fef9cbe2441f73f2165377c94185cffc604f1b98c"
+    }
+  },
+  "updatedAt": "2018-11-28T21:04:49.265Z"
+}

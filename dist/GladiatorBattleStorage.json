@@ -1,0 +1,1034 @@
+{
+  "contractName": "GladiatorBattleStorage",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "battleBlockNumber",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x006f9c57"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "winner",
+      "outputs": [
+        {
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "name": "dragonId",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x1cbeae5e"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "address"
+        },
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "userApplicationIndex",
+      "outputs": [
+        {
+          "name": "index",
+          "type": "uint256"
+        },
+        {
+          "name": "exist",
+          "type": "bool"
+        },
+        {
+          "name": "dragonId",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x3e006812"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "creator",
+      "outputs": [
+        {
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "name": "dragonId",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x510b5158"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_newDependencies",
+          "type": "address[]"
+        }
+      ],
+      "name": "setExternalDependencies",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x65fc1253"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "autoSelectBlock",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x675ec725"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x8da5cb5b"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "challenges",
+      "outputs": [
+        {
+          "name": "isGold",
+          "type": "bool"
+        },
+        {
+          "name": "bet",
+          "type": "uint256"
+        },
+        {
+          "name": "counter",
+          "type": "uint16"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x8f1d3776"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "challengeCompensation",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xa87e846a"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getInternalDependencies",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xb75c4f80"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "opponent",
+      "outputs": [
+        {
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "name": "dragonId",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xbc1d755a"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "battleOccurred",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xc73bcff9"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "challengeApplicants",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xcb6ce069"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "challengeCancelled",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xe28c1f42"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getExternalDependencies",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xe6458f6e"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xf2fde38b"
+    },
+    {
+      "inputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor",
+      "signature": "constructor"
+    },
+    {
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "fallback"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event",
+      "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "name": "_isGold",
+          "type": "bool"
+        },
+        {
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "payOut",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x2da2dd1b"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_isGold",
+          "type": "bool"
+        },
+        {
+          "name": "_bet",
+          "type": "uint256"
+        },
+        {
+          "name": "_counter",
+          "type": "uint16"
+        }
+      ],
+      "name": "create",
+      "outputs": [
+        {
+          "name": "challengeId",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x49a703e7"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "name": "_challengeId",
+          "type": "uint256"
+        }
+      ],
+      "name": "addUserChallenge",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x71c32219"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_challengeId",
+          "type": "uint256"
+        },
+        {
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "name": "_dragonId",
+          "type": "uint256"
+        }
+      ],
+      "name": "setCreator",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xad4a7366"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_challengeId",
+          "type": "uint256"
+        },
+        {
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "name": "_dragonId",
+          "type": "uint256"
+        }
+      ],
+      "name": "setOpponent",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x41ef99c1"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_challengeId",
+          "type": "uint256"
+        },
+        {
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "name": "_dragonId",
+          "type": "uint256"
+        }
+      ],
+      "name": "setWinner",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x51b42283"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_dragonId",
+          "type": "uint256"
+        },
+        {
+          "name": "_challengeId",
+          "type": "uint256"
+        },
+        {
+          "name": "_tactics",
+          "type": "uint8[2]"
+        },
+        {
+          "name": "_user",
+          "type": "address"
+        }
+      ],
+      "name": "setDragonApplication",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x80e9824a"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_dragonId",
+          "type": "uint256"
+        },
+        {
+          "name": "_challengeId",
+          "type": "uint256"
+        }
+      ],
+      "name": "removeDragonApplication",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x0021ab6e"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "name": "_challengeId",
+          "type": "uint256"
+        },
+        {
+          "name": "_dragonId",
+          "type": "uint256"
+        }
+      ],
+      "name": "addUserApplication",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x24825860"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "name": "_challengeId",
+          "type": "uint256"
+        }
+      ],
+      "name": "removeUserApplication",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x709ebddb"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_challengeId",
+          "type": "uint256"
+        },
+        {
+          "name": "_dragonId",
+          "type": "uint256"
+        }
+      ],
+      "name": "addChallengeApplicant",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xb2e383fa"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_challengeId",
+          "type": "uint256"
+        },
+        {
+          "name": "_number",
+          "type": "uint256"
+        }
+      ],
+      "name": "setAutoSelectBlock",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x5b67863a"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_challengeId",
+          "type": "uint256"
+        },
+        {
+          "name": "_number",
+          "type": "uint256"
+        }
+      ],
+      "name": "setBattleBlockNumber",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x32c53643"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_challengeId",
+          "type": "uint256"
+        },
+        {
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "setCompensation",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xa7b351e5"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_challengeId",
+          "type": "uint256"
+        }
+      ],
+      "name": "setBattleOccurred",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x196dbf89"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_challengeId",
+          "type": "uint256"
+        },
+        {
+          "name": "_battleId",
+          "type": "uint256"
+        }
+      ],
+      "name": "setChallengeBattleId",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x59b2c06b"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_challengeId",
+          "type": "uint256"
+        }
+      ],
+      "name": "setChallengeCancelled",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xf3d264f1"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_challengeId",
+          "type": "uint256"
+        },
+        {
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "setExtensionTimePrice",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x6e8bc9aa"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "setExtensionTimeStartPrice",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x4822aeae"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "challengesAmount",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xce9a4720"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address"
+        }
+      ],
+      "name": "getUserChallenges",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x11da8e54"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_challengeId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getChallengeApplicants",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xbe83c276"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_challengeId",
+          "type": "uint256"
+        }
+      ],
+      "name": "challengeApplicantsAmount",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x5983d310"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_dragonId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getDragonApplication",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "name": "",
+          "type": "uint8[2]"
+        },
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xb2ccb73f"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address"
+        }
+      ],
+      "name": "getUserApplications",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xb7c36291"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_challengeId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getExtensionTimePrice",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xe53afab0"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_challengeId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getChallengeParticipants",
+      "outputs": [
+        {
+          "name": "firstUser",
+          "type": "address"
+        },
+        {
+          "name": "firstDragonId",
+          "type": "uint256"
+        },
+        {
+          "name": "secondUser",
+          "type": "address"
+        },
+        {
+          "name": "secondDragonId",
+          "type": "uint256"
+        },
+        {
+          "name": "winnerUser",
+          "type": "address"
+        },
+        {
+          "name": "winnerDragonId",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x023bf958"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_challengeId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getChallengeDetails",
+      "outputs": [
+        {
+          "name": "isGold",
+          "type": "bool"
+        },
+        {
+          "name": "bet",
+          "type": "uint256"
+        },
+        {
+          "name": "counter",
+          "type": "uint16"
+        },
+        {
+          "name": "blockNumber",
+          "type": "uint256"
+        },
+        {
+          "name": "active",
+          "type": "bool"
+        },
+        {
+          "name": "opponentAutoSelectBlock",
+          "type": "uint256"
+        },
+        {
+          "name": "cancelled",
+          "type": "bool"
+        },
+        {
+          "name": "compensation",
+          "type": "uint256"
+        },
+        {
+          "name": "selectionExtensionTimePrice",
+          "type": "uint256"
+        },
+        {
+          "name": "battleId",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x3d40a54f"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_newDependencies",
+          "type": "address[]"
+        }
+      ],
+      "name": "setInternalDependencies",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x69c0ad93"
+    }
+  ],
+  "networks": {
+    "1": {
+      "events": {
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event",
+          "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+        }
+      },
+      "links": {},
+      "address": "0x0D49B7FA6dc0e3c5745DA5413F2bdb212EF714Dd",
+      "transactionHash": "0x49dc687173b7ccab4e59d104c5a27e850697fd371d2360130fc09ac3d1e8796e"
+    }
+  },
+  "updatedAt": "2018-11-28T21:04:49.175Z"
+}

@@ -1,9 +1,9 @@
 const dotenv = require('dotenv');
-const { toWei } = require('web3-utils');
 const HDWalletProvider = require('truffle-hdwallet-provider');
 const NonceTrackerSubprovider = require('web3-provider-engine/subproviders/nonce-tracker');
-
 const Web3 = require('web3');
+
+const { toWei } = Web3.utils;
 
 dotenv.config();
 dotenv.config({ path: '.env.local' });

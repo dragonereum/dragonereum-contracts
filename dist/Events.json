@@ -1,0 +1,3455 @@
+{
+  "contractName": "Events",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_newDependencies",
+          "type": "address[]"
+        }
+      ],
+      "name": "setExternalDependencies",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x65fc1253"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_newDependencies",
+          "type": "address[]"
+        }
+      ],
+      "name": "setInternalDependencies",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x69c0ad93"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x8da5cb5b"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getInternalDependencies",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xb75c4f80"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getExternalDependencies",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xe6458f6e"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xf2fde38b"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "EggClaimed",
+      "type": "event",
+      "signature": "0x1d4adb0d180bb2314e75eb92129e14464833f51e8850e15230eac6ef66ba8048"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "EggSentToNest",
+      "type": "event",
+      "signature": "0x2f061f413bc9976f677e97ad90b18a51aa30962e4d0478137187dbe1ab507277"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "dragonId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "name": "eggId",
+          "type": "uint256"
+        }
+      ],
+      "name": "EggHatched",
+      "type": "event",
+      "signature": "0xfb5524208c13c35801d6a771c1506a0a169687ef04692d793cd26722df18e7ce"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "DragonUpgraded",
+      "type": "event",
+      "signature": "0x699acdb9a1b570c200596c086817324d9c313e1243c5a5e90e411cae48e2ec09"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "EggCreated",
+      "type": "event",
+      "signature": "0x438c94f4f26e7558401f3741046cc24939d114301c314ed7b4f72759b3844f5c"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "seller",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "DragonOnSale",
+      "type": "event",
+      "signature": "0x7fe690681762f2344e96bccd03723395fe405f1a107830feb6af1c5b23d75e52"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "seller",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "DragonRemovedFromSale",
+      "type": "event",
+      "signature": "0x8f61fd074baa38552eedb08b1992aaf6a41d2259bcdf022daeaaea073f7cf105"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "seller",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "DragonRemovedFromBreeding",
+      "type": "event",
+      "signature": "0x9bcfbf5ed8301fc77a651d9f70fb9141c0a491a31983894265baba43c525f8a9"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "seller",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "DragonOnBreeding",
+      "type": "event",
+      "signature": "0xe81ae173855d6c683111e066a8f0953024a59c99a4b56f2009d4925c0e69ffff"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "buyer",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "seller",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "price",
+          "type": "uint256"
+        }
+      ],
+      "name": "DragonBought",
+      "type": "event",
+      "signature": "0xd128d1c751e71c46ee817e377069e745cadea8801286c4b2f43dfe03c5691701"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "buyer",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "seller",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "price",
+          "type": "uint256"
+        }
+      ],
+      "name": "DragonBreedingBought",
+      "type": "event",
+      "signature": "0xf97459aed01f29ea7a6f76df76b3549c5a4631ff463fe9a4c5a79120145c96f8"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "restAmount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "lastBlock",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "interval",
+          "type": "uint256"
+        }
+      ],
+      "name": "DistributionUpdated",
+      "type": "event",
+      "signature": "0x33a9e5064cde0e23e17620f5186dbc127306864069276a5b80b24ffc5481cb4a"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "seller",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "EggOnSale",
+      "type": "event",
+      "signature": "0xb8f9fa9cce66420b80341504952713f8ea1a1ea8e98ae197332df333f7b62c72"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "seller",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "EggRemovedFromSale",
+      "type": "event",
+      "signature": "0xe44bce0615677b916ff91ae7ff90cf1cc2c52f9adf1934c2793427460f4b1efc"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "buyer",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "seller",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "price",
+          "type": "uint256"
+        }
+      ],
+      "name": "EggBought",
+      "type": "event",
+      "signature": "0x0bc800d07f13ae6f9193f06be7e83a81cdb5f0f8f104c70a177416a9a40e404e"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "seller",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "price",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "GoldSellOrderCreated",
+      "type": "event",
+      "signature": "0xaa3be91e9a9032fd04fb702128e6a4f033e1779603e239a3cca5265031c7b6a8"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "seller",
+          "type": "address"
+        }
+      ],
+      "name": "GoldSellOrderCancelled",
+      "type": "event",
+      "signature": "0x129e5c634635a4c038190a8bf5f0a104ce930b2fdd99fb6920d06b32efb3896f"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "buyer",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "seller",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "price",
+          "type": "uint256"
+        }
+      ],
+      "name": "GoldSold",
+      "type": "event",
+      "signature": "0xf30b1e76fcda46a3cbf4ed6d5d934f1cf9cd2224d8a9deb32354767eb7ad2c33"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "buyer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "price",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "GoldBuyOrderCreated",
+      "type": "event",
+      "signature": "0xa8690ff24f74fa2f88b98111f9a6ec275c484b041f9f1e3ea33acb02cf767f63"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "buyer",
+          "type": "address"
+        }
+      ],
+      "name": "GoldBuyOrderCancelled",
+      "type": "event",
+      "signature": "0xf3a34ee91913f8cb683f5a8a200ad03c83cd0cbc8df4fdc83aac338a5279e20d"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "seller",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "buyer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "price",
+          "type": "uint256"
+        }
+      ],
+      "name": "GoldBought",
+      "type": "event",
+      "signature": "0x113084ed5417f1f3c96b2d2d0a10414e265fb66f5675667be0a76d24af2d2a87"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "seller",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "SkillOnSale",
+      "type": "event",
+      "signature": "0xc822c7282c84e89c67de7ba6ea3b1c9727cb91b77107b44a703f7f3a20ef7bd7"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "seller",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "SkillRemovedFromSale",
+      "type": "event",
+      "signature": "0x0b69970169f4ec0486822dbdf913b878b941cfd6e4b20158e00c53d32a4d6baa"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "buyer",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "seller",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "name": "target",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "price",
+          "type": "uint256"
+        }
+      ],
+      "name": "SkillBought",
+      "type": "event",
+      "signature": "0x7640f0d359b15656d124fe38523668c6c895e11604e6c9a32c2016e1eedb65f6"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "SkillSet",
+      "type": "event",
+      "signature": "0x4c47cdd7f9904a1b744ef574448c7a7921a6ebfce55fd250a733ac97a008422c"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "name": "target",
+          "type": "uint256"
+        }
+      ],
+      "name": "SkillUsed",
+      "type": "event",
+      "signature": "0x9ff0d1e0723cae2e99bbfd0a4271df1476560fb9d9a760d34d7ddb04636275b6"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "name",
+          "type": "bytes32"
+        }
+      ],
+      "name": "DragonNameSet",
+      "type": "event",
+      "signature": "0x51452f0545b84f0f266c25b7fbfb1054016df361ac145208339dbbe9ee7767e0"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "melee",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "name": "attack",
+          "type": "uint8"
+        }
+      ],
+      "name": "DragonTacticsSet",
+      "type": "event",
+      "signature": "0xa2c10f39d2fc730d57712730ee7574d7cdc32bf2cb3cb67e68916330a1b98bf7"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "name",
+          "type": "bytes32"
+        }
+      ],
+      "name": "UserNameSet",
+      "type": "event",
+      "signature": "0xe8902b6f3d334a65946ca2280eedd9a2014018fbb40d19de49d76c148dd382d5"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "battleId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "date",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "seed",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "attackerId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "name": "winnerId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "name": "looserId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "isGladiator",
+          "type": "bool"
+        },
+        {
+          "indexed": false,
+          "name": "gladiatorBattleId",
+          "type": "uint256"
+        }
+      ],
+      "name": "BattleEnded",
+      "type": "event",
+      "signature": "0xe6b719273ea0a90a150e2dc0b1ffc24c17947447cbd97aba16819d1dad794326"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "battleId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "winnerLevel",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "name": "winnerCoolness",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "name": "looserLevel",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "name": "looserCoolness",
+          "type": "uint32"
+        }
+      ],
+      "name": "BattleDragonsDetails",
+      "type": "event",
+      "signature": "0x0c7bd6327eb0ced0e76988cabc445c7849873a15a0b26e17b8e65352f8b0a4d0"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "battleId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "attackerMaxHealth",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "name": "attackerMaxMana",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "name": "attackerInitHealth",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "name": "attackerInitMana",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "name": "opponentMaxHealth",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "name": "opponentMaxMana",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "name": "opponentInitHealth",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "name": "opponentInitMana",
+          "type": "uint32"
+        }
+      ],
+      "name": "BattleHealthAndMana",
+      "type": "event",
+      "signature": "0x99eee990bb5ddebd4a294f680d0e3b168745c3b2c37e814d87433095b091c866"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "battleId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "attackerAttack",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "name": "attackerDefense",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "name": "attackerStamina",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "name": "attackerSpeed",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "name": "attackerIntelligence",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "name": "opponentAttack",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "name": "opponentDefense",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "name": "opponentStamina",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "name": "opponentSpeed",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "name": "opponentIntelligence",
+          "type": "uint32"
+        }
+      ],
+      "name": "BattleSkills",
+      "type": "event",
+      "signature": "0x52b5f96e426d617c084a1c202be0319ae8bd5012fe75905f5a6763ffd5c530de"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "battleId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "attackerMeleeChance",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "name": "attackerAttackChance",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "name": "opponentMeleeChance",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "name": "opponentAttackChance",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "name": "attackerBuffs",
+          "type": "uint32[5]"
+        },
+        {
+          "indexed": false,
+          "name": "opponentBuffs",
+          "type": "uint32[5]"
+        }
+      ],
+      "name": "BattleTacticsAndBuffs",
+      "type": "event",
+      "signature": "0x746995dcce9136d6d2d1afbf87619bac43e2812c349c68b0fc9aaf13709e1751"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "battleId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "name": "winner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "looser",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "reward",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "isGold",
+          "type": "bool"
+        }
+      ],
+      "name": "GladiatorBattleEnded",
+      "type": "event",
+      "signature": "0xfb37f3683c60a48e539ef320d30b3387a21bfc7ffb001e264cc244d88c3b4664"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "dragonId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "bet",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "isGold",
+          "type": "bool"
+        }
+      ],
+      "name": "GladiatorBattleCreated",
+      "type": "event",
+      "signature": "0xfcea52c328a6eafeccf329dc14167cf29ccee473c7952f48c17e2f817b881011"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "dragonId",
+          "type": "uint256"
+        }
+      ],
+      "name": "GladiatorBattleApplicantAdded",
+      "type": "event",
+      "signature": "0xa66b74d9baa70399fab887956e2d0e708e5cb2947419681ad8f4ee21d80bd09d"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "name": "dragonId",
+          "type": "uint256"
+        }
+      ],
+      "name": "GladiatorBattleOpponentSelected",
+      "type": "event",
+      "signature": "0xbf56ee4195d4e08b85a873567584275a6da34ac8a21e2c9d9e5446f1b0442c7f"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "GladiatorBattleCancelled",
+      "type": "event",
+      "signature": "0x7f1925f39afbd4163e56e33f0a43a37dd0aed8a9fe5d1b085162104a5e8df716"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "GladiatorBattleBetReturned",
+      "type": "event",
+      "signature": "0xb11c47d5a398787112870841957d6d05928712cf94e394ac4b7c7ddd0f949104"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "blockNumber",
+          "type": "uint256"
+        }
+      ],
+      "name": "GladiatorBattleOpponentSelectTimeUpdated",
+      "type": "event",
+      "signature": "0x32ea5a0c7100138e9e4c68796924c0ad3e26e64678098358e9c900365f0f3c05"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "blockNumber",
+          "type": "uint256"
+        }
+      ],
+      "name": "GladiatorBattleBlockNumberUpdated",
+      "type": "event",
+      "signature": "0xeed76360653efa48ecd46b620389f4814792d6160ecf1333aa1ee7efe164a95a"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "willCreatorWin",
+          "type": "bool"
+        },
+        {
+          "indexed": false,
+          "name": "bet",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "isGold",
+          "type": "bool"
+        }
+      ],
+      "name": "GladiatorBattleSpectatorBetPlaced",
+      "type": "event",
+      "signature": "0x6d6f022b7b5e924d3983726c16228123b746f9f53d508253bedb17c5d0e860ce"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "GladiatorBattleSpectatorBetRemoved",
+      "type": "event",
+      "signature": "0xd888c09e8330b695506da17eed2bda554be0dca1e660c9d256ffa451e6706bcf"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "reward",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "isGold",
+          "type": "bool"
+        }
+      ],
+      "name": "GladiatorBattleSpectatorRewardPaidOut",
+      "type": "event",
+      "signature": "0x0ffb822a9ae734c7758dcf78e67f34f6b184f914a8f62bd44ce90667c607467d"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "dragons",
+          "type": "uint256[10]"
+        },
+        {
+          "indexed": false,
+          "name": "users",
+          "type": "address[10]"
+        }
+      ],
+      "name": "LeaderboardRewardsDistributed",
+      "type": "event",
+      "signature": "0xe4a90c9011a03b4f651cb027bb2abbad977756b54f021a7689d0903490886d02"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event",
+      "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitEggClaimed",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xc6fa14de"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitEggSentToNest",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x1fec8cde"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitDragonUpgraded",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x4a80bafb"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "name": "_dragonId",
+          "type": "uint256"
+        },
+        {
+          "name": "_eggId",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitEggHatched",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x548bfc49"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitEggCreated",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xff2db04c"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitDragonOnSale",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x29fe7567"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitDragonRemovedFromSale",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x7c0090fa"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitDragonRemovedFromBreeding",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x3b8108fe"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitDragonOnBreeding",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xe90176c7"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_buyer",
+          "type": "address"
+        },
+        {
+          "name": "_seller",
+          "type": "address"
+        },
+        {
+          "name": "_id",
+          "type": "uint256"
+        },
+        {
+          "name": "_price",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitDragonBought",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xe6a4e2dd"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_buyer",
+          "type": "address"
+        },
+        {
+          "name": "_seller",
+          "type": "address"
+        },
+        {
+          "name": "_id",
+          "type": "uint256"
+        },
+        {
+          "name": "_price",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitDragonBreedingBought",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xc981eb79"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_restAmount",
+          "type": "uint256"
+        },
+        {
+          "name": "_lastBlock",
+          "type": "uint256"
+        },
+        {
+          "name": "_interval",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitDistributionUpdated",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x819b9b38"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitEggOnSale",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xb266f1ea"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitEggRemovedFromSale",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x2dbaa71e"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_buyer",
+          "type": "address"
+        },
+        {
+          "name": "_seller",
+          "type": "address"
+        },
+        {
+          "name": "_id",
+          "type": "uint256"
+        },
+        {
+          "name": "_price",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitEggBought",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xd07052c4"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "name": "_price",
+          "type": "uint256"
+        },
+        {
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitGoldSellOrderCreated",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x2b7edd66"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address"
+        }
+      ],
+      "name": "emitGoldSellOrderCancelled",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x011b1b84"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_buyer",
+          "type": "address"
+        },
+        {
+          "name": "_seller",
+          "type": "address"
+        },
+        {
+          "name": "_amount",
+          "type": "uint256"
+        },
+        {
+          "name": "_price",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitGoldSold",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xb579dc46"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "name": "_price",
+          "type": "uint256"
+        },
+        {
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitGoldBuyOrderCreated",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x78343a5d"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address"
+        }
+      ],
+      "name": "emitGoldBuyOrderCancelled",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xb77dfb70"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_buyer",
+          "type": "address"
+        },
+        {
+          "name": "_seller",
+          "type": "address"
+        },
+        {
+          "name": "_amount",
+          "type": "uint256"
+        },
+        {
+          "name": "_price",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitGoldBought",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x6de108ac"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitSkillOnSale",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xac33f820"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitSkillRemovedFromSale",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xee618a14"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_buyer",
+          "type": "address"
+        },
+        {
+          "name": "_seller",
+          "type": "address"
+        },
+        {
+          "name": "_id",
+          "type": "uint256"
+        },
+        {
+          "name": "_target",
+          "type": "uint256"
+        },
+        {
+          "name": "_price",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitSkillBought",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x8ca5ffd3"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitSkillSet",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x6ab9197b"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256"
+        },
+        {
+          "name": "_target",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitSkillUsed",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x3ffc48f5"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256"
+        },
+        {
+          "name": "_name",
+          "type": "bytes32"
+        }
+      ],
+      "name": "emitDragonNameSet",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xdeab57ba"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256"
+        },
+        {
+          "name": "_melee",
+          "type": "uint8"
+        },
+        {
+          "name": "_attack",
+          "type": "uint8"
+        }
+      ],
+      "name": "emitDragonTacticsSet",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x97521ec0"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "name": "_name",
+          "type": "bytes32"
+        }
+      ],
+      "name": "emitUserNameSet",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xc2046fa2"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_battleId",
+          "type": "uint256"
+        },
+        {
+          "name": "_date",
+          "type": "uint256"
+        },
+        {
+          "name": "_seed",
+          "type": "uint256"
+        },
+        {
+          "name": "_attackerId",
+          "type": "uint256"
+        },
+        {
+          "name": "_winnerId",
+          "type": "uint256"
+        },
+        {
+          "name": "_looserId",
+          "type": "uint256"
+        },
+        {
+          "name": "_isGladiator",
+          "type": "bool"
+        },
+        {
+          "name": "_gladiatorBattleId",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitBattleEnded",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x86f28401"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_battleId",
+          "type": "uint256"
+        },
+        {
+          "name": "_winnerLevel",
+          "type": "uint8"
+        },
+        {
+          "name": "_winnerCoolness",
+          "type": "uint32"
+        },
+        {
+          "name": "_looserLevel",
+          "type": "uint8"
+        },
+        {
+          "name": "_looserCoolness",
+          "type": "uint32"
+        }
+      ],
+      "name": "emitBattleDragonsDetails",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x2fe36c13"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_battleId",
+          "type": "uint256"
+        },
+        {
+          "name": "_attackerMaxHealth",
+          "type": "uint32"
+        },
+        {
+          "name": "_attackerMaxMana",
+          "type": "uint32"
+        },
+        {
+          "name": "_attackerInitHealth",
+          "type": "uint32"
+        },
+        {
+          "name": "_attackerInitMana",
+          "type": "uint32"
+        },
+        {
+          "name": "_opponentMaxHealth",
+          "type": "uint32"
+        },
+        {
+          "name": "_opponentMaxMana",
+          "type": "uint32"
+        },
+        {
+          "name": "_opponentInitHealth",
+          "type": "uint32"
+        },
+        {
+          "name": "_opponentInitMana",
+          "type": "uint32"
+        }
+      ],
+      "name": "emitBattleHealthAndMana",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x316c1d6e"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_battleId",
+          "type": "uint256"
+        },
+        {
+          "name": "_attackerAttack",
+          "type": "uint32"
+        },
+        {
+          "name": "_attackerDefense",
+          "type": "uint32"
+        },
+        {
+          "name": "_attackerStamina",
+          "type": "uint32"
+        },
+        {
+          "name": "_attackerSpeed",
+          "type": "uint32"
+        },
+        {
+          "name": "_attackerIntelligence",
+          "type": "uint32"
+        },
+        {
+          "name": "_opponentAttack",
+          "type": "uint32"
+        },
+        {
+          "name": "_opponentDefense",
+          "type": "uint32"
+        },
+        {
+          "name": "_opponentStamina",
+          "type": "uint32"
+        },
+        {
+          "name": "_opponentSpeed",
+          "type": "uint32"
+        },
+        {
+          "name": "_opponentIntelligence",
+          "type": "uint32"
+        }
+      ],
+      "name": "emitBattleSkills",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x730859f6"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_battleId",
+          "type": "uint256"
+        },
+        {
+          "name": "_attackerMeleeChance",
+          "type": "uint8"
+        },
+        {
+          "name": "_attackerAttackChance",
+          "type": "uint8"
+        },
+        {
+          "name": "_opponentMeleeChance",
+          "type": "uint8"
+        },
+        {
+          "name": "_opponentAttackChance",
+          "type": "uint8"
+        },
+        {
+          "name": "_attackerBuffs",
+          "type": "uint32[5]"
+        },
+        {
+          "name": "_opponentBuffs",
+          "type": "uint32[5]"
+        }
+      ],
+      "name": "emitBattleTacticsAndBuffs",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x0a76e43e"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256"
+        },
+        {
+          "name": "_battleId",
+          "type": "uint256"
+        },
+        {
+          "name": "_winner",
+          "type": "address"
+        },
+        {
+          "name": "_looser",
+          "type": "address"
+        },
+        {
+          "name": "_reward",
+          "type": "uint256"
+        },
+        {
+          "name": "_isGold",
+          "type": "bool"
+        }
+      ],
+      "name": "emitGladiatorBattleEnded",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x535d3c08"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256"
+        },
+        {
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "name": "_dragonId",
+          "type": "uint256"
+        },
+        {
+          "name": "_bet",
+          "type": "uint256"
+        },
+        {
+          "name": "_isGold",
+          "type": "bool"
+        }
+      ],
+      "name": "emitGladiatorBattleCreated",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x65186fec"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256"
+        },
+        {
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "name": "_dragonId",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitGladiatorBattleApplicantAdded",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xea8decb2"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256"
+        },
+        {
+          "name": "_dragonId",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitGladiatorBattleOpponentSelected",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x0584f886"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitGladiatorBattleCancelled",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xa839edc5"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256"
+        },
+        {
+          "name": "_user",
+          "type": "address"
+        }
+      ],
+      "name": "emitGladiatorBattleBetReturned",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x24447533"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256"
+        },
+        {
+          "name": "_blockNumber",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitGladiatorBattleOpponentSelectTimeUpdated",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x74cda5c2"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256"
+        },
+        {
+          "name": "_blockNumber",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitGladiatorBattleBlockNumberUpdated",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x13ec8e6c"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256"
+        },
+        {
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "name": "_willCreatorWin",
+          "type": "bool"
+        },
+        {
+          "name": "_value",
+          "type": "uint256"
+        },
+        {
+          "name": "_isGold",
+          "type": "bool"
+        }
+      ],
+      "name": "emitGladiatorBattleSpectatorBetPlaced",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x75a3fd5b"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256"
+        },
+        {
+          "name": "_user",
+          "type": "address"
+        }
+      ],
+      "name": "emitGladiatorBattleSpectatorBetRemoved",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x81fa42e4"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256"
+        },
+        {
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "name": "_value",
+          "type": "uint256"
+        },
+        {
+          "name": "_isGold",
+          "type": "bool"
+        }
+      ],
+      "name": "emitGladiatorBattleSpectatorRewardPaidOut",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x538dc57d"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_dragons",
+          "type": "uint256[10]"
+        },
+        {
+          "name": "_users",
+          "type": "address[10]"
+        }
+      ],
+      "name": "emitLeaderboardRewardsDistributed",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x9ffd3498"
+    }
+  ],
+  "networks": {
+    "1": {
+      "events": {
+        "0x1d4adb0d180bb2314e75eb92129e14464833f51e8850e15230eac6ef66ba8048": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "user",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            }
+          ],
+          "name": "EggClaimed",
+          "type": "event",
+          "signature": "0x1d4adb0d180bb2314e75eb92129e14464833f51e8850e15230eac6ef66ba8048"
+        },
+        "0x2f061f413bc9976f677e97ad90b18a51aa30962e4d0478137187dbe1ab507277": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "user",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            }
+          ],
+          "name": "EggSentToNest",
+          "type": "event",
+          "signature": "0x2f061f413bc9976f677e97ad90b18a51aa30962e4d0478137187dbe1ab507277"
+        },
+        "0xfb5524208c13c35801d6a771c1506a0a169687ef04692d793cd26722df18e7ce": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "user",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "dragonId",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "name": "eggId",
+              "type": "uint256"
+            }
+          ],
+          "name": "EggHatched",
+          "type": "event",
+          "signature": "0xfb5524208c13c35801d6a771c1506a0a169687ef04692d793cd26722df18e7ce"
+        },
+        "0x699acdb9a1b570c200596c086817324d9c313e1243c5a5e90e411cae48e2ec09": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            }
+          ],
+          "name": "DragonUpgraded",
+          "type": "event",
+          "signature": "0x699acdb9a1b570c200596c086817324d9c313e1243c5a5e90e411cae48e2ec09"
+        },
+        "0x438c94f4f26e7558401f3741046cc24939d114301c314ed7b4f72759b3844f5c": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "user",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            }
+          ],
+          "name": "EggCreated",
+          "type": "event",
+          "signature": "0x438c94f4f26e7558401f3741046cc24939d114301c314ed7b4f72759b3844f5c"
+        },
+        "0x7fe690681762f2344e96bccd03723395fe405f1a107830feb6af1c5b23d75e52": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "seller",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            }
+          ],
+          "name": "DragonOnSale",
+          "type": "event",
+          "signature": "0x7fe690681762f2344e96bccd03723395fe405f1a107830feb6af1c5b23d75e52"
+        },
+        "0x8f61fd074baa38552eedb08b1992aaf6a41d2259bcdf022daeaaea073f7cf105": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "seller",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            }
+          ],
+          "name": "DragonRemovedFromSale",
+          "type": "event",
+          "signature": "0x8f61fd074baa38552eedb08b1992aaf6a41d2259bcdf022daeaaea073f7cf105"
+        },
+        "0x9bcfbf5ed8301fc77a651d9f70fb9141c0a491a31983894265baba43c525f8a9": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "seller",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            }
+          ],
+          "name": "DragonRemovedFromBreeding",
+          "type": "event",
+          "signature": "0x9bcfbf5ed8301fc77a651d9f70fb9141c0a491a31983894265baba43c525f8a9"
+        },
+        "0xe81ae173855d6c683111e066a8f0953024a59c99a4b56f2009d4925c0e69ffff": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "seller",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            }
+          ],
+          "name": "DragonOnBreeding",
+          "type": "event",
+          "signature": "0xe81ae173855d6c683111e066a8f0953024a59c99a4b56f2009d4925c0e69ffff"
+        },
+        "0xd128d1c751e71c46ee817e377069e745cadea8801286c4b2f43dfe03c5691701": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "buyer",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "seller",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "price",
+              "type": "uint256"
+            }
+          ],
+          "name": "DragonBought",
+          "type": "event",
+          "signature": "0xd128d1c751e71c46ee817e377069e745cadea8801286c4b2f43dfe03c5691701"
+        },
+        "0xf97459aed01f29ea7a6f76df76b3549c5a4631ff463fe9a4c5a79120145c96f8": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "buyer",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "seller",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "price",
+              "type": "uint256"
+            }
+          ],
+          "name": "DragonBreedingBought",
+          "type": "event",
+          "signature": "0xf97459aed01f29ea7a6f76df76b3549c5a4631ff463fe9a4c5a79120145c96f8"
+        },
+        "0x33a9e5064cde0e23e17620f5186dbc127306864069276a5b80b24ffc5481cb4a": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "restAmount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "lastBlock",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "interval",
+              "type": "uint256"
+            }
+          ],
+          "name": "DistributionUpdated",
+          "type": "event",
+          "signature": "0x33a9e5064cde0e23e17620f5186dbc127306864069276a5b80b24ffc5481cb4a"
+        },
+        "0xb8f9fa9cce66420b80341504952713f8ea1a1ea8e98ae197332df333f7b62c72": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "seller",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            }
+          ],
+          "name": "EggOnSale",
+          "type": "event",
+          "signature": "0xb8f9fa9cce66420b80341504952713f8ea1a1ea8e98ae197332df333f7b62c72"
+        },
+        "0xe44bce0615677b916ff91ae7ff90cf1cc2c52f9adf1934c2793427460f4b1efc": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "seller",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            }
+          ],
+          "name": "EggRemovedFromSale",
+          "type": "event",
+          "signature": "0xe44bce0615677b916ff91ae7ff90cf1cc2c52f9adf1934c2793427460f4b1efc"
+        },
+        "0x0bc800d07f13ae6f9193f06be7e83a81cdb5f0f8f104c70a177416a9a40e404e": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "buyer",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "seller",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "price",
+              "type": "uint256"
+            }
+          ],
+          "name": "EggBought",
+          "type": "event",
+          "signature": "0x0bc800d07f13ae6f9193f06be7e83a81cdb5f0f8f104c70a177416a9a40e404e"
+        },
+        "0xaa3be91e9a9032fd04fb702128e6a4f033e1779603e239a3cca5265031c7b6a8": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "seller",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "price",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "amount",
+              "type": "uint256"
+            }
+          ],
+          "name": "GoldSellOrderCreated",
+          "type": "event",
+          "signature": "0xaa3be91e9a9032fd04fb702128e6a4f033e1779603e239a3cca5265031c7b6a8"
+        },
+        "0x129e5c634635a4c038190a8bf5f0a104ce930b2fdd99fb6920d06b32efb3896f": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "seller",
+              "type": "address"
+            }
+          ],
+          "name": "GoldSellOrderCancelled",
+          "type": "event",
+          "signature": "0x129e5c634635a4c038190a8bf5f0a104ce930b2fdd99fb6920d06b32efb3896f"
+        },
+        "0xf30b1e76fcda46a3cbf4ed6d5d934f1cf9cd2224d8a9deb32354767eb7ad2c33": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "buyer",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "seller",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "price",
+              "type": "uint256"
+            }
+          ],
+          "name": "GoldSold",
+          "type": "event",
+          "signature": "0xf30b1e76fcda46a3cbf4ed6d5d934f1cf9cd2224d8a9deb32354767eb7ad2c33"
+        },
+        "0xa8690ff24f74fa2f88b98111f9a6ec275c484b041f9f1e3ea33acb02cf767f63": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "buyer",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "price",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "amount",
+              "type": "uint256"
+            }
+          ],
+          "name": "GoldBuyOrderCreated",
+          "type": "event",
+          "signature": "0xa8690ff24f74fa2f88b98111f9a6ec275c484b041f9f1e3ea33acb02cf767f63"
+        },
+        "0xf3a34ee91913f8cb683f5a8a200ad03c83cd0cbc8df4fdc83aac338a5279e20d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "buyer",
+              "type": "address"
+            }
+          ],
+          "name": "GoldBuyOrderCancelled",
+          "type": "event",
+          "signature": "0xf3a34ee91913f8cb683f5a8a200ad03c83cd0cbc8df4fdc83aac338a5279e20d"
+        },
+        "0x113084ed5417f1f3c96b2d2d0a10414e265fb66f5675667be0a76d24af2d2a87": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "seller",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "buyer",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "price",
+              "type": "uint256"
+            }
+          ],
+          "name": "GoldBought",
+          "type": "event",
+          "signature": "0x113084ed5417f1f3c96b2d2d0a10414e265fb66f5675667be0a76d24af2d2a87"
+        },
+        "0xc822c7282c84e89c67de7ba6ea3b1c9727cb91b77107b44a703f7f3a20ef7bd7": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "seller",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            }
+          ],
+          "name": "SkillOnSale",
+          "type": "event",
+          "signature": "0xc822c7282c84e89c67de7ba6ea3b1c9727cb91b77107b44a703f7f3a20ef7bd7"
+        },
+        "0x0b69970169f4ec0486822dbdf913b878b941cfd6e4b20158e00c53d32a4d6baa": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "seller",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            }
+          ],
+          "name": "SkillRemovedFromSale",
+          "type": "event",
+          "signature": "0x0b69970169f4ec0486822dbdf913b878b941cfd6e4b20158e00c53d32a4d6baa"
+        },
+        "0x7640f0d359b15656d124fe38523668c6c895e11604e6c9a32c2016e1eedb65f6": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "buyer",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "seller",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "name": "target",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "price",
+              "type": "uint256"
+            }
+          ],
+          "name": "SkillBought",
+          "type": "event",
+          "signature": "0x7640f0d359b15656d124fe38523668c6c895e11604e6c9a32c2016e1eedb65f6"
+        },
+        "0x4c47cdd7f9904a1b744ef574448c7a7921a6ebfce55fd250a733ac97a008422c": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            }
+          ],
+          "name": "SkillSet",
+          "type": "event",
+          "signature": "0x4c47cdd7f9904a1b744ef574448c7a7921a6ebfce55fd250a733ac97a008422c"
+        },
+        "0x9ff0d1e0723cae2e99bbfd0a4271df1476560fb9d9a760d34d7ddb04636275b6": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "name": "target",
+              "type": "uint256"
+            }
+          ],
+          "name": "SkillUsed",
+          "type": "event",
+          "signature": "0x9ff0d1e0723cae2e99bbfd0a4271df1476560fb9d9a760d34d7ddb04636275b6"
+        },
+        "0x51452f0545b84f0f266c25b7fbfb1054016df361ac145208339dbbe9ee7767e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "name",
+              "type": "bytes32"
+            }
+          ],
+          "name": "DragonNameSet",
+          "type": "event",
+          "signature": "0x51452f0545b84f0f266c25b7fbfb1054016df361ac145208339dbbe9ee7767e0"
+        },
+        "0xa2c10f39d2fc730d57712730ee7574d7cdc32bf2cb3cb67e68916330a1b98bf7": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "melee",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "name": "attack",
+              "type": "uint8"
+            }
+          ],
+          "name": "DragonTacticsSet",
+          "type": "event",
+          "signature": "0xa2c10f39d2fc730d57712730ee7574d7cdc32bf2cb3cb67e68916330a1b98bf7"
+        },
+        "0xe8902b6f3d334a65946ca2280eedd9a2014018fbb40d19de49d76c148dd382d5": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "user",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "name",
+              "type": "bytes32"
+            }
+          ],
+          "name": "UserNameSet",
+          "type": "event",
+          "signature": "0xe8902b6f3d334a65946ca2280eedd9a2014018fbb40d19de49d76c148dd382d5"
+        },
+        "0xe6b719273ea0a90a150e2dc0b1ffc24c17947447cbd97aba16819d1dad794326": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "battleId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "date",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "seed",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "attackerId",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "name": "winnerId",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "name": "looserId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "isGladiator",
+              "type": "bool"
+            },
+            {
+              "indexed": false,
+              "name": "gladiatorBattleId",
+              "type": "uint256"
+            }
+          ],
+          "name": "BattleEnded",
+          "type": "event",
+          "signature": "0xe6b719273ea0a90a150e2dc0b1ffc24c17947447cbd97aba16819d1dad794326"
+        },
+        "0x0c7bd6327eb0ced0e76988cabc445c7849873a15a0b26e17b8e65352f8b0a4d0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "battleId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "winnerLevel",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "name": "winnerCoolness",
+              "type": "uint32"
+            },
+            {
+              "indexed": false,
+              "name": "looserLevel",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "name": "looserCoolness",
+              "type": "uint32"
+            }
+          ],
+          "name": "BattleDragonsDetails",
+          "type": "event",
+          "signature": "0x0c7bd6327eb0ced0e76988cabc445c7849873a15a0b26e17b8e65352f8b0a4d0"
+        },
+        "0x99eee990bb5ddebd4a294f680d0e3b168745c3b2c37e814d87433095b091c866": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "battleId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "attackerMaxHealth",
+              "type": "uint32"
+            },
+            {
+              "indexed": false,
+              "name": "attackerMaxMana",
+              "type": "uint32"
+            },
+            {
+              "indexed": false,
+              "name": "attackerInitHealth",
+              "type": "uint32"
+            },
+            {
+              "indexed": false,
+              "name": "attackerInitMana",
+              "type": "uint32"
+            },
+            {
+              "indexed": false,
+              "name": "opponentMaxHealth",
+              "type": "uint32"
+            },
+            {
+              "indexed": false,
+              "name": "opponentMaxMana",
+              "type": "uint32"
+            },
+            {
+              "indexed": false,
+              "name": "opponentInitHealth",
+              "type": "uint32"
+            },
+            {
+              "indexed": false,
+              "name": "opponentInitMana",
+              "type": "uint32"
+            }
+          ],
+          "name": "BattleHealthAndMana",
+          "type": "event",
+          "signature": "0x99eee990bb5ddebd4a294f680d0e3b168745c3b2c37e814d87433095b091c866"
+        },
+        "0x52b5f96e426d617c084a1c202be0319ae8bd5012fe75905f5a6763ffd5c530de": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "battleId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "attackerAttack",
+              "type": "uint32"
+            },
+            {
+              "indexed": false,
+              "name": "attackerDefense",
+              "type": "uint32"
+            },
+            {
+              "indexed": false,
+              "name": "attackerStamina",
+              "type": "uint32"
+            },
+            {
+              "indexed": false,
+              "name": "attackerSpeed",
+              "type": "uint32"
+            },
+            {
+              "indexed": false,
+              "name": "attackerIntelligence",
+              "type": "uint32"
+            },
+            {
+              "indexed": false,
+              "name": "opponentAttack",
+              "type": "uint32"
+            },
+            {
+              "indexed": false,
+              "name": "opponentDefense",
+              "type": "uint32"
+            },
+            {
+              "indexed": false,
+              "name": "opponentStamina",
+              "type": "uint32"
+            },
+            {
+              "indexed": false,
+              "name": "opponentSpeed",
+              "type": "uint32"
+            },
+            {
+              "indexed": false,
+              "name": "opponentIntelligence",
+              "type": "uint32"
+            }
+          ],
+          "name": "BattleSkills",
+          "type": "event",
+          "signature": "0x52b5f96e426d617c084a1c202be0319ae8bd5012fe75905f5a6763ffd5c530de"
+        },
+        "0x746995dcce9136d6d2d1afbf87619bac43e2812c349c68b0fc9aaf13709e1751": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "battleId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "attackerMeleeChance",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "name": "attackerAttackChance",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "name": "opponentMeleeChance",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "name": "opponentAttackChance",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "name": "attackerBuffs",
+              "type": "uint32[5]"
+            },
+            {
+              "indexed": false,
+              "name": "opponentBuffs",
+              "type": "uint32[5]"
+            }
+          ],
+          "name": "BattleTacticsAndBuffs",
+          "type": "event",
+          "signature": "0x746995dcce9136d6d2d1afbf87619bac43e2812c349c68b0fc9aaf13709e1751"
+        },
+        "0xfb37f3683c60a48e539ef320d30b3387a21bfc7ffb001e264cc244d88c3b4664": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "battleId",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "name": "winner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "looser",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "reward",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "isGold",
+              "type": "bool"
+            }
+          ],
+          "name": "GladiatorBattleEnded",
+          "type": "event",
+          "signature": "0xfb37f3683c60a48e539ef320d30b3387a21bfc7ffb001e264cc244d88c3b4664"
+        },
+        "0xfcea52c328a6eafeccf329dc14167cf29ccee473c7952f48c17e2f817b881011": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "name": "user",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "dragonId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "bet",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "isGold",
+              "type": "bool"
+            }
+          ],
+          "name": "GladiatorBattleCreated",
+          "type": "event",
+          "signature": "0xfcea52c328a6eafeccf329dc14167cf29ccee473c7952f48c17e2f817b881011"
+        },
+        "0xa66b74d9baa70399fab887956e2d0e708e5cb2947419681ad8f4ee21d80bd09d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "name": "user",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "dragonId",
+              "type": "uint256"
+            }
+          ],
+          "name": "GladiatorBattleApplicantAdded",
+          "type": "event",
+          "signature": "0xa66b74d9baa70399fab887956e2d0e708e5cb2947419681ad8f4ee21d80bd09d"
+        },
+        "0xbf56ee4195d4e08b85a873567584275a6da34ac8a21e2c9d9e5446f1b0442c7f": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "name": "dragonId",
+              "type": "uint256"
+            }
+          ],
+          "name": "GladiatorBattleOpponentSelected",
+          "type": "event",
+          "signature": "0xbf56ee4195d4e08b85a873567584275a6da34ac8a21e2c9d9e5446f1b0442c7f"
+        },
+        "0x7f1925f39afbd4163e56e33f0a43a37dd0aed8a9fe5d1b085162104a5e8df716": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            }
+          ],
+          "name": "GladiatorBattleCancelled",
+          "type": "event",
+          "signature": "0x7f1925f39afbd4163e56e33f0a43a37dd0aed8a9fe5d1b085162104a5e8df716"
+        },
+        "0xb11c47d5a398787112870841957d6d05928712cf94e394ac4b7c7ddd0f949104": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "name": "user",
+              "type": "address"
+            }
+          ],
+          "name": "GladiatorBattleBetReturned",
+          "type": "event",
+          "signature": "0xb11c47d5a398787112870841957d6d05928712cf94e394ac4b7c7ddd0f949104"
+        },
+        "0x32ea5a0c7100138e9e4c68796924c0ad3e26e64678098358e9c900365f0f3c05": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "blockNumber",
+              "type": "uint256"
+            }
+          ],
+          "name": "GladiatorBattleOpponentSelectTimeUpdated",
+          "type": "event",
+          "signature": "0x32ea5a0c7100138e9e4c68796924c0ad3e26e64678098358e9c900365f0f3c05"
+        },
+        "0xeed76360653efa48ecd46b620389f4814792d6160ecf1333aa1ee7efe164a95a": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "blockNumber",
+              "type": "uint256"
+            }
+          ],
+          "name": "GladiatorBattleBlockNumberUpdated",
+          "type": "event",
+          "signature": "0xeed76360653efa48ecd46b620389f4814792d6160ecf1333aa1ee7efe164a95a"
+        },
+        "0x6d6f022b7b5e924d3983726c16228123b746f9f53d508253bedb17c5d0e860ce": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "name": "user",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "willCreatorWin",
+              "type": "bool"
+            },
+            {
+              "indexed": false,
+              "name": "bet",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "isGold",
+              "type": "bool"
+            }
+          ],
+          "name": "GladiatorBattleSpectatorBetPlaced",
+          "type": "event",
+          "signature": "0x6d6f022b7b5e924d3983726c16228123b746f9f53d508253bedb17c5d0e860ce"
+        },
+        "0xd888c09e8330b695506da17eed2bda554be0dca1e660c9d256ffa451e6706bcf": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "name": "user",
+              "type": "address"
+            }
+          ],
+          "name": "GladiatorBattleSpectatorBetRemoved",
+          "type": "event",
+          "signature": "0xd888c09e8330b695506da17eed2bda554be0dca1e660c9d256ffa451e6706bcf"
+        },
+        "0x0ffb822a9ae734c7758dcf78e67f34f6b184f914a8f62bd44ce90667c607467d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "name": "user",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "reward",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "isGold",
+              "type": "bool"
+            }
+          ],
+          "name": "GladiatorBattleSpectatorRewardPaidOut",
+          "type": "event",
+          "signature": "0x0ffb822a9ae734c7758dcf78e67f34f6b184f914a8f62bd44ce90667c607467d"
+        },
+        "0xe4a90c9011a03b4f651cb027bb2abbad977756b54f021a7689d0903490886d02": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "dragons",
+              "type": "uint256[10]"
+            },
+            {
+              "indexed": false,
+              "name": "users",
+              "type": "address[10]"
+            }
+          ],
+          "name": "LeaderboardRewardsDistributed",
+          "type": "event",
+          "signature": "0xe4a90c9011a03b4f651cb027bb2abbad977756b54f021a7689d0903490886d02"
+        },
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event",
+          "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+        }
+      },
+      "links": {},
+      "address": "0xD31b8e0219Bd83678978f6dB531d9A3F45608894",
+      "transactionHash": "0x7dbcbea38616cf7a86b26b6ceaa0acfa6faa5ee84debd1e587c93702a608d7b8"
+    }
+  },
+  "updatedAt": "2018-11-28T21:04:49.297Z"
+}

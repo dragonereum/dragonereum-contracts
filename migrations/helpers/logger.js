@@ -1,5 +1,3 @@
-const colors = require('colors');
-
 const started = text => hash => {
   if (process.env.DEBUG) {
     console.log('\n    ***** STARTED *****'.blue, `\n    > ${text} \n    > tx: ${hash}`);
