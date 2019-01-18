@@ -28,23 +28,19 @@ async function getAllFiles(currentPath) {
   ];
 }
 
-async function clearOldContracts(distDir) {
-  const contractsPath = path.join(root, distDir);
-
-  if (fs.existsSync(contractsPath)) {
-    return Promise.all((await getAllFiles(contractsPath))
+async function clearOldContracts(outputPath) {
+  if (fs.existsSync(outputPath)) {
+    return Promise.all((await getAllFiles(outputPath))
       .map(contract => unlink(contract)));
   }
 }
 
-async function writeNewContracts(contractsBuildDid, distDir) {
-  const contractsPath = path.join(root, distDir);
-
-  if (!fs.existsSync(contractsPath)) {
-    await mkdir(contractsPath);
+async function writeNewContracts(inputPath, outputPath) {
+  if (!fs.existsSync(outputPath)) {
+    await mkdir(outputPath);
   }
 
-  const contracts = await getAllFiles(path.join(root, contractsBuildDid));
+  const contracts = await getAllFiles(inputPath);
 
   return Promise.all(contracts.map((contract) => {
     const {
@@ -56,7 +52,7 @@ async function writeNewContracts(contractsBuildDid, distDir) {
 
     if (Object.keys(networks).length) {
       return writeFile(
-        path.join(contractsPath, path.basename(contract)),
+        path.join(outputPath, path.basename(contract)),
         JSON.stringify({
           contractName,
           abi,
@@ -76,12 +72,14 @@ async function run() {
   const outputIndex = process.argv.indexOf('--output');
   const inputDir = (inputIndex !== -1 && process.argv[inputIndex + 1]) || 'build_contracts';
   const outputDir = (outputIndex !== -1 && process.argv[outputIndex + 1]) || 'dist';
+  const inputPath = path.join(root, inputDir);
+  const outputPath = path.join(root, outputDir);
 
   if (process.argv.includes('--clear')) {
-    await clearOldContracts(outputDir);
+    await clearOldContracts(outputPath);
   }
 
-  await writeNewContracts(inputDir, outputDir);
+  await writeNewContracts(inputPath, outputPath);
 }
 
 run();
