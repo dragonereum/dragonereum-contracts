@@ -13,9 +13,9 @@ import Getter from '@dragonereum/contracts/dist/Getter.json';
 // or
 import { Getter } from '@dragonereum/contracts';
 
-const getterInstance = contract(Getter);
+const getter = contract(Getter);
 
-getterInstance.setProvider(window.ethereum);
+getter.setProvider(window.ethereum);
 ```
 
 ## How to run tests
