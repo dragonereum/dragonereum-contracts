@@ -1,7 +1,7 @@
 {
   "name": "@dragonereum/contracts",
   "description": "Dragonereum smart contracts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "WTFPL",
   "repository": {
     "type": "git",
