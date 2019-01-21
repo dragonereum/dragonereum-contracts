@@ -476,7 +476,8 @@ contract('MainBattleTests', async (accounts) => {
                 { from: senders[1], value: bet }
             );
             const applicants = await gladiatorBattleStorage.getChallengeApplicants(challengeId); // dragons
-            await mainBattle.chooseOpponentForGladiatorBattle(challengeId, applicants.slice(-1)[0], {from: senders[0]});
+            const hash = getApplicantsHash(applicants);
+            await mainBattle.chooseOpponentForGladiatorBattle(challengeId, applicants.slice(-1)[0], hash, {from: senders[0]});
             for (i = 0; i < 5; i++) { await mineBlock(); }
             await mainBattle.startGladiatorBattle(challengeId);
 
@@ -497,7 +498,9 @@ contract('MainBattleTests', async (accounts) => {
                 challengeId, yourDragons[0], yourTactics,
                 { from: senders[1], value: bet }
             );
-            await mainBattle.cancelGladiatorBattle(challengeId, {from: senders[0]});
+            const applicants = await gladiatorBattleStorage.getChallengeApplicants(challengeId); // dragons
+            const hash = getApplicantsHash(applicants);
+            await mainBattle.cancelGladiatorBattle(challengeId, hash, {from: senders[0]});
 
             const hisDragons = await dragonStorage.tokensOfOwner(senders[4]);
             let error = await mainBattle.applyForGladiatorBattle(
@@ -517,7 +520,8 @@ contract('MainBattleTests', async (accounts) => {
                 { from: senders[1], value: bet }
             );
             const applicants = await gladiatorBattleStorage.getChallengeApplicants(challengeId); // dragons
-            await mainBattle.chooseOpponentForGladiatorBattle(challengeId, applicants.slice(-1)[0], {from: senders[0]});
+            const hash = getApplicantsHash(applicants);
+            await mainBattle.chooseOpponentForGladiatorBattle(challengeId, applicants.slice(-1)[0], hash, {from: senders[0]});
 
             const hisDragons = await dragonStorage.tokensOfOwner(senders[4]);
             let error = await mainBattle.applyForGladiatorBattle(

@@ -18,7 +18,7 @@ contract Distribution is Upgradable {
     constructor() public {
         releasedAmount = 10000; // released amount of eggs
         restAmount = releasedAmount;
-        lastBlock = 6790679; // start block number
+        lastBlock = block.number; // start block number
         interval = 1;
     }
 

@@ -22,7 +22,6 @@ contract('Gold', async (accounts) => {
     const NONSENSE_GAMES = 3000000; // 5%
     const GAME_ACCOUNT = 45000000; // 75%
 
-    // TODO: change
     const founders = [
       '0x23b3763f31F4da6B42F47927BCF66A221E8705Cd',
       '0x5CFF40372b96e133967d980F72812653163121fa',
@@ -31,8 +30,8 @@ contract('Gold', async (accounts) => {
       '0x87252E8F04F6c6bC4d2c690893addb7108aa8a5f'
     ];
 
-    const foundation = '0x2A52fBa0c290D30214Cb7876eDE81C2B407E8782'; // TODO: change
-    const NonsenseGames = '0x10208FB4Ef202BdC49803995b0A8CA185383bba4'; // TODO: change
+    const foundation = '0x5Ff8957EF7e964E8072815211c9Fc3E7F820F1D4';
+    const NonsenseGames = '0x10208FB4Ef202BdC49803995b0A8CA185383bba4';
 
 
     before(async () => {
