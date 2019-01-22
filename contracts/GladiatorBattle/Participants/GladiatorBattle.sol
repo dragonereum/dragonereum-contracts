@@ -332,8 +332,9 @@ contract GladiatorBattle is Upgradable {
         ); // 30% of bet to applicants
 
         bool _didCreatorWin = _creatorId == _winnerId;
+        uint256 _winnerBetsValue = spectatorsStorage.challengeBetsValue(_challengeId, _didCreatorWin);
         uint256 _opponentBetsValue = spectatorsStorage.challengeBetsValue(_challengeId, !_didCreatorWin);
-        if (_rewardFromSpectatorsBets > 0) {
+        if (_opponentBetsValue > 0 && _winnerBetsValue > 0) {
             uint256 _rewardFromSpectatorsBets = _opponentBetsValue.mul(15).div(100); // 15%
 
             uint256 _challengeBalance = spectatorsStorage.challengeBalance(_challengeId);
