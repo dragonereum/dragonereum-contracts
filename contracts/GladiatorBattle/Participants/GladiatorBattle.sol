@@ -87,8 +87,8 @@ contract GladiatorBattle is Upgradable {
         require(!_isOpponentSelected(_id), "opponent already selected");
     }
 
-    function _checkThatTimeHasCome(bool _bool) internal pure {
-        require(_bool, "time has not yet come");
+    function _checkThatTimeHasCome(uint256 _blockNumber) internal pure {
+        require(_blockNumber <= block.number, "time has not yet come");
     }
 
     function _checkChallengeCreator(uint256 _id, address _user) internal view {
@@ -273,7 +273,7 @@ contract GladiatorBattle is Upgradable {
         _compareApplicantsArrays(_challengeId, _applicantsHash);
         uint256 _autoSelectBlock = _storage_.autoSelectBlock(_challengeId);
         require(_autoSelectBlock != 0, "no auto select");
-        _checkThatTimeHasCome(_autoSelectBlock <= block.number);
+        _checkThatTimeHasCome(_autoSelectBlock);
 
         _checkForApplicants(_challengeId);
 
@@ -315,7 +315,7 @@ contract GladiatorBattle is Upgradable {
 
     function _checkBattleBlockNumber(uint256 _blockNumber) internal view {
         require(_blockNumber != 0, "opponent is not selected");
-        _checkThatTimeHasCome(_blockNumber < block.number);
+        _checkThatTimeHasCome(_blockNumber);
     }
 
     function _checkBattlePossibilityAndGenerateRandom(uint256 _challengeId) internal view returns (uint256) {
