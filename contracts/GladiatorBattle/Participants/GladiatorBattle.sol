@@ -75,8 +75,8 @@ contract GladiatorBattle is Upgradable {
         require(!isDragonChallenging(_dragonId), "this dragon has already applied");
     }
 
-    function _checkTheBattleHasNotOccured(uint256 _challengeId) internal view {
-        require(!_storage_.battleOccurred(_challengeId), "the battle has already occured");
+    function _checkTheBattleHasNotOccurred(uint256 _challengeId) internal view {
+        require(!_storage_.battleOccurred(_challengeId), "the battle has already occurred");
     }
 
     function _checkTheChallengeIsNotCancelled(uint256 _id) internal view {
@@ -231,7 +231,7 @@ contract GladiatorBattle is Upgradable {
     ) external onlyController {
         _validateChallengeId(_challengeId);
         _validateTactics(_tactics);
-        _checkTheBattleHasNotOccured(_challengeId);
+        _checkTheBattleHasNotOccurred(_challengeId);
         _checkTheChallengeIsNotCancelled(_challengeId);
         _checkTheOpponentIsNotSelected(_challengeId);
         _checkDragonAvailability(_user, _dragonId);
@@ -322,7 +322,7 @@ contract GladiatorBattle is Upgradable {
         uint256 _blockNumber = _getBattleBlockNumber(_challengeId);
         _checkBattleBlockNumber(_blockNumber);
         require(_blockNumber >= _safeSub(block.number, 256), "time has passed");
-        _checkTheBattleHasNotOccured(_challengeId);
+        _checkTheBattleHasNotOccurred(_challengeId);
         _checkTheChallengeIsNotCancelled(_challengeId);
 
         return random.randomOfBlock(2**256 - 1, _blockNumber);
@@ -349,7 +349,7 @@ contract GladiatorBattle is Upgradable {
             uint256 _rewardFromSpectatorsBets = _opponentBetsValue.mul(15).div(100); // 15%
 
             uint256 _challengeBalance = spectatorsStorage.challengeBalance(_challengeId);
-            require(_challengeBalance >= _rewardFromSpectatorsBets, "not enouth coins, something went wrong");
+            require(_challengeBalance >= _rewardFromSpectatorsBets, "not enough coins, something went wrong");
 
             spectatorsStorage.payOut(_winner, isGold, _rewardFromSpectatorsBets);
 
@@ -466,7 +466,7 @@ contract GladiatorBattle is Upgradable {
         uint256 _challengeId
     ) external onlyController returns (uint256 newBattleBlockNumber) {
         _validateChallengeId(_challengeId);
-        _checkTheBattleHasNotOccured(_challengeId);
+        _checkTheBattleHasNotOccurred(_challengeId);
         _checkTheChallengeIsNotCancelled(_challengeId);
         uint256 _blockNumber = _getBattleBlockNumber(_challengeId);
         _checkBattleBlockNumber(_blockNumber);

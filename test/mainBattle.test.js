@@ -466,7 +466,7 @@ contract('MainBattleTests', async (accounts) => {
             error.reason.should.be.equal('not enough tokens');
         })
 
-        it('cannot apply for if battle has occured', async () => {
+        it('cannot apply for if battle has occurred', async () => {
             const bet = toWei('1');
             const yourTactics = [toBN(79), toBN(79)];
             const yourDragons = await dragonStorage.tokensOfOwner(senders[1]);
@@ -485,7 +485,7 @@ contract('MainBattleTests', async (accounts) => {
             let error = await mainBattle.applyForGladiatorBattle(
                 challengeId, hisDragons[0], yourTactics,
                 {from: senders[2]}).should.be.rejected;
-            error.reason.should.be.equal('the battle has already occured');
+            error.reason.should.be.equal('the battle has already occurred');
         })
 
         it('cannot apply for cancelled battle', async () => {
@@ -882,11 +882,11 @@ contract('MainBattleTests', async (accounts) => {
             error.reason.should.be.equal("time has passed");
         })
 
-        it('cannot start Battle if it occured', async () => {
+        it('cannot start Battle if it occurred', async () => {
             const challengeId = await setBattle();
             await mainBattle.startGladiatorBattle(challengeId);
             let error = await mainBattle.startGladiatorBattle(challengeId).should.be.rejected;
-            error.reason.should.be.equal("the battle has already occured");
+            error.reason.should.be.equal("the battle has already occurred");
         })
 
         it('cannot start id cancelled')
@@ -976,7 +976,7 @@ contract('MainBattleTests', async (accounts) => {
 
         })
 
-        it('cannot cancel if battle occured', async () => {
+        it('cannot cancel if battle occurred', async () => {
             const challengeId = await setBattle();
             await mainBattle.startGladiatorBattle(challengeId);
 

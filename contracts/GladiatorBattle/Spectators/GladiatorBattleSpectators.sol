@@ -124,16 +124,16 @@ contract GladiatorBattleSpectators is Upgradable {
         return battleStorage.battleOccurred(_challengeId);
     }
 
-    function _checkThatBattleHasNotOccured(
+    function _checkThatBattleHasNotOccurred(
         uint256 _challengeId
     ) internal view {
-        require(!_hasBattleOccurred(_challengeId), "the battle has already occured");
+        require(!_hasBattleOccurred(_challengeId), "the battle has already occurred");
     }
 
-    function _checkThatBattleHasOccured(
+    function _checkThatBattleHasOccurred(
         uint256 _challengeId
     ) internal view {
-        require(_hasBattleOccurred(_challengeId), "the battle has not yet occured");
+        require(_hasBattleOccurred(_challengeId), "the battle has not yet occurred");
     }
 
     function _checkThatWeDoNotKnowTheResult(
@@ -203,7 +203,7 @@ contract GladiatorBattleSpectators is Upgradable {
     ) external onlyController returns (bool isGold) {
         _validateChallengeId(_challengeId);
         _checkThatOpponentIsSelected(_challengeId);
-        _checkThatBattleHasNotOccured(_challengeId);
+        _checkThatBattleHasNotOccurred(_challengeId);
         _checkThatWeDoNotKnowTheResult(_challengeId);
         require(_value > 0, "a bet must be more than 0");
 
@@ -280,7 +280,7 @@ contract GladiatorBattleSpectators is Upgradable {
         uint256 _challengeId
     ) external onlyController returns (uint256 reward, bool isGold) {
         _validateChallengeId(_challengeId);
-        _checkThatBattleHasOccured(_challengeId);
+        _checkThatBattleHasOccurred(_challengeId);
         (
             uint256 _betId,
             bool _willCreatorWin,
@@ -301,7 +301,7 @@ contract GladiatorBattleSpectators is Upgradable {
         reward = reward.add(_value);
 
         uint256 _challengeBalance = _getChallengeBalance(_challengeId);
-        require(_challengeBalance >= reward, "not enouth coins, something went wrong");
+        require(_challengeBalance >= reward, "not enough coins, something went wrong");
 
         reward = _isLast ? _challengeBalance : reward; // get rid of inaccuracies of calculations
 
