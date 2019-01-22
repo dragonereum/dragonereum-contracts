@@ -466,7 +466,7 @@ contract('MainBattleTests', async (accounts) => {
             error.reason.should.be.equal('not enough tokens');
         })
 
-        it('cannot apply for if battle has occured', async () => {
+        it('cannot apply for if battle has occurred', async () => {
             const bet = toWei('1');
             const yourTactics = [toBN(79), toBN(79)];
             const yourDragons = await dragonStorage.tokensOfOwner(senders[1]);
@@ -485,7 +485,7 @@ contract('MainBattleTests', async (accounts) => {
             let error = await mainBattle.applyForGladiatorBattle(
                 challengeId, hisDragons[0], yourTactics,
                 {from: senders[2]}).should.be.rejected;
-            error.reason.should.be.equal('the battle has already occured');
+            error.reason.should.be.equal('the battle has already occurred');
         })
 
         it('cannot apply for cancelled battle', async () => {
@@ -816,7 +816,11 @@ contract('MainBattleTests', async (accounts) => {
 
     describe('#startGladiatorBattle', async () => {
         it('should work', async () => {
-            const challengeId = await setBattle();
+            const challengeId = await setBattle('chooseOpponent', false, 10);
+            await placeSpectatorsBets(challengeId);
+            for (i = 0; i < 5; i++) {
+                await mineBlock();
+            }
             const myDragons = await dragonStorage.tokensOfOwner(senders[0]);
 
             const balanceBefore = await web3.eth.getBalance(senders[0]);
@@ -878,11 +882,11 @@ contract('MainBattleTests', async (accounts) => {
             error.reason.should.be.equal("time has passed");
         })
 
-        it('cannot start Battle if it occured', async () => {
+        it('cannot start Battle if it occurred', async () => {
             const challengeId = await setBattle();
             await mainBattle.startGladiatorBattle(challengeId);
             let error = await mainBattle.startGladiatorBattle(challengeId).should.be.rejected;
-            error.reason.should.be.equal("the battle has already occured");
+            error.reason.should.be.equal("the battle has already occurred");
         })
 
         it('cannot start id cancelled')
@@ -972,7 +976,7 @@ contract('MainBattleTests', async (accounts) => {
 
         })
 
-        it('cannot cancel if battle occured', async () => {
+        it('cannot cancel if battle occurred', async () => {
             const challengeId = await setBattle();
             await mainBattle.startGladiatorBattle(challengeId);
 
@@ -1135,6 +1139,28 @@ contract('MainBattleTests', async (accounts) => {
 
         return challengeId;
 
+    }
+
+    async function placeSpectatorsBets(challengeId, isGold, bets = ['2', '1', '3', '0.5', '4']) {
+        const users = [senders[4], senders[5], senders[6], senders[7], owner];
+        const gasPrice = new BN(toWei('1', 'gwei'));
+
+        if (isGold) {
+            for (let i = 0; i < 5; i++) {
+                await gold.transfer(users[i], toWei(bets[i]), { from: teamAccount });
+            }
+        }
+
+        for (let i = 0; i < 5; i++) {
+            const bet = new BN(toWei(bets[i]));
+            const willCreatorWin = i < 2;
+            await mainBattle.placeSpectatorBetOnGladiatorBattle(
+                challengeId,
+                willCreatorWin,
+                bet,
+                { from: users[i], value: isGold ? 0 : bet, gasPrice }
+            );
+        }
     }
 
     describe('#placeSpectatorBetOnGladiatorBattle', async () => {
@@ -1368,31 +1394,70 @@ contract('MainBattleTests', async (accounts) => {
             betsGoldBalanceAfter.should.be.eq.BN(betsGoldBalanceBefore);
             userGoldBalanceAfter.should.be.eq.BN(userGoldBalanceBefore);
         });
+
+        it('return a bet if no bets on opponent', async () => {
+            const challengeId = await setBattle('chooseOpponent');
+
+            const user = senders[0];
+            const gasPrice = new BN(toWei('1', 'gwei'));
+            const bet = new BN(toWei('1'));
+            const willCreatorWin = false;
+
+            const amountBefore = await gladiatorBattleSpectatorsStorage.betsAmount();
+
+            const betsAmountsBefore = await gladiatorBattleSpectatorsStorage.getChallengeBetsAmount(challengeId);
+            const betsValuesBefore = await gladiatorBattleSpectatorsStorage.getChallengeBetsValue(challengeId);
+            const betsBalanceBefore = await gladiatorBattleSpectatorsStorage.challengeBalance(challengeId);
+            const userBalanceBefore = new BN(await web3.eth.getBalance(user));
+
+            let result = await mainBattle.placeSpectatorBetOnGladiatorBattle(
+                challengeId,
+                willCreatorWin,
+                bet,
+                { from: user, value: bet, gasPrice }
+            );
+            let burnedEth = gasPrice.mul(new BN(result.receipt.gasUsed));
+
+            const userBalanceAfterBet = new BN(await web3.eth.getBalance(user));
+            userBalanceBefore.should.be.eq.BN(userBalanceAfterBet.add(bet).add(burnedEth));
+
+            for (let i = 0; i < 5; i++) {
+                await mineBlock();
+            }
+            await mainBattle.startGladiatorBattle(challengeId, { from: user, gasPrice });
+
+            const userBet = await gladiatorBattleSpectatorsStorage.getUserBet(user, challengeId);
+
+            const userBalanceBeforeReturningBet = new BN(await web3.eth.getBalance(user));
+
+            result = await mainBattle.removeSpectatorBetFromGladiatorBattle(
+                challengeId,
+                { from: user, gasPrice }
+            );
+            burnedEth = gasPrice.mul(new BN(result.receipt.gasUsed));
+
+            const userBalanceAfterReturningBet = new BN(await web3.eth.getBalance(user));
+            userBalanceBeforeReturningBet.add(bet).should.be.eq.BN(userBalanceAfterReturningBet.add(burnedEth));
+
+            (await gladiatorBattleSpectatorsStorage.betsAmount()).should.be.eq.BN(amountBefore.add(new BN(1)));
+            await gladiatorBattleSpectatorsStorage.getUserBet(user, challengeId).should.be.rejected;
+
+            const betDetails = await gladiatorBattleSpectatorsStorage.allBets(userBet.betId);
+            betDetails.active.should.be.equal(false);
+
+            const betsAmountsAfter = await gladiatorBattleSpectatorsStorage.getChallengeBetsAmount(challengeId);
+            const betsValuesAfter = await gladiatorBattleSpectatorsStorage.getChallengeBetsValue(challengeId);
+            const betsBalanceAfter = await gladiatorBattleSpectatorsStorage.challengeBalance(challengeId);
+
+            betsAmountsAfter.onCreator.should.be.eq.BN(betsAmountsBefore.onCreator);
+            betsAmountsAfter.onOpponent.should.be.eq.BN(betsAmountsBefore.onOpponent);
+            betsValuesAfter.onCreator.should.be.eq.BN(betsValuesBefore.onCreator);
+            betsValuesAfter.onOpponent.should.be.eq.BN(betsValuesBefore.onOpponent);
+            betsBalanceAfter.should.be.eq.BN(betsBalanceBefore);
+        });
     });
 
     describe('#requestSpectatorRewardForGladiatorBattle', async () => {
-        async function placeBets(challengeId, isGold, bets = ['2', '1', '3', '0.5', '4']) {
-            const users = [senders[4], senders[5], senders[6], senders[7], owner];
-            const gasPrice = new BN(toWei('1', 'gwei'));
-
-            if (isGold) {
-                for (let i = 0; i < 5; i++) {
-                    await gold.transfer(users[i], toWei(bets[i]), { from: teamAccount });
-                }
-            }
-
-            for (let i = 0; i < 5; i++) {
-                const bet = new BN(toWei(bets[i]));
-                const willCreatorWin = i < 2;
-                await mainBattle.placeSpectatorBetOnGladiatorBattle(
-                    challengeId,
-                    willCreatorWin,
-                    bet,
-                    { from: users[i], value: isGold ? 0 : bet, gasPrice }
-                );
-            }
-        }
-
         async function getBalance(user, isGold) {
           if (isGold) {
               return new BN(await gold.balanceOf(user));
@@ -1441,7 +1506,7 @@ contract('MainBattleTests', async (accounts) => {
 
             const user = senders[4];
 
-            await placeBets(challengeId);
+            await placeSpectatorsBets(challengeId);
             for (i = 0; i < 5; i++) {
                 await mineBlock();
             }
@@ -1463,7 +1528,7 @@ contract('MainBattleTests', async (accounts) => {
 
                 const user = senders[4];
 
-                await placeBets(challengeId, false, bets[i]);
+                await placeSpectatorsBets(challengeId, false, bets[i]);
                 for (let i = 0; i < 5; i++) {
                     await mineBlock();
                 }
@@ -1488,7 +1553,7 @@ contract('MainBattleTests', async (accounts) => {
 
             const users = [senders[4], senders[5]];
 
-            await placeBets(challengeId);
+            await placeSpectatorsBets(challengeId);
             for (let i = 0; i < 5; i++) {
                 await mineBlock();
             }
@@ -1510,7 +1575,7 @@ contract('MainBattleTests', async (accounts) => {
 
             const users = [senders[4], senders[5]];
 
-            await placeBets(challengeId, true);
+            await placeSpectatorsBets(challengeId, true);
             for (let i = 0; i < 5; i++) {
                 await mineBlock();
             }

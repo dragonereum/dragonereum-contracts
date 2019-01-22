@@ -75,8 +75,8 @@ contract GladiatorBattle is Upgradable {
         require(!isDragonChallenging(_dragonId), "this dragon has already applied");
     }
 
-    function _checkTheBattleHasNotOccured(uint256 _challengeId) internal view {
-        require(!_storage_.battleOccurred(_challengeId), "the battle has already occured");
+    function _checkTheBattleHasNotOccurred(uint256 _challengeId) internal view {
+        require(!_storage_.battleOccurred(_challengeId), "the battle has already occurred");
     }
 
     function _checkTheChallengeIsNotCancelled(uint256 _id) internal view {
@@ -85,6 +85,10 @@ contract GladiatorBattle is Upgradable {
 
     function _checkTheOpponentIsNotSelected(uint256 _id) internal view {
         require(!_isOpponentSelected(_id), "opponent already selected");
+    }
+
+    function _checkThatTimeHasCome(uint256 _blockNumber) internal pure {
+        require(_blockNumber <= block.number, "time has not yet come");
     }
 
     function _checkChallengeCreator(uint256 _id, address _user) internal view {
@@ -172,6 +176,13 @@ contract GladiatorBattle is Upgradable {
         return _storage_.opponent(_id);
     }
 
+    function _getSpectatorsBetsValue(
+        uint256 _challengeId,
+        bool _onCreator
+    ) internal view returns (uint256) {
+        return spectatorsStorage.challengeBetsValue(_challengeId, _onCreator);
+    }
+
     function isDragonChallenging(uint256 _dragonId) public view returns (bool) {
         (uint256 _challengeId, , ) = _getDragonApplication(_dragonId);
         if (_challengeId != 0) {
@@ -220,7 +231,7 @@ contract GladiatorBattle is Upgradable {
     ) external onlyController {
         _validateChallengeId(_challengeId);
         _validateTactics(_tactics);
-        _checkTheBattleHasNotOccured(_challengeId);
+        _checkTheBattleHasNotOccurred(_challengeId);
         _checkTheChallengeIsNotCancelled(_challengeId);
         _checkTheOpponentIsNotSelected(_challengeId);
         _checkDragonAvailability(_user, _dragonId);
@@ -262,7 +273,7 @@ contract GladiatorBattle is Upgradable {
         _compareApplicantsArrays(_challengeId, _applicantsHash);
         uint256 _autoSelectBlock = _storage_.autoSelectBlock(_challengeId);
         require(_autoSelectBlock != 0, "no auto select");
-        require(_autoSelectBlock <= block.number, "time has not yet come");
+        _checkThatTimeHasCome(_autoSelectBlock);
 
         _checkForApplicants(_challengeId);
 
@@ -304,14 +315,14 @@ contract GladiatorBattle is Upgradable {
 
     function _checkBattleBlockNumber(uint256 _blockNumber) internal view {
         require(_blockNumber != 0, "opponent is not selected");
-        require(_blockNumber < block.number, "time has not yet come");
+        _checkThatTimeHasCome(_blockNumber);
     }
 
     function _checkBattlePossibilityAndGenerateRandom(uint256 _challengeId) internal view returns (uint256) {
         uint256 _blockNumber = _getBattleBlockNumber(_challengeId);
         _checkBattleBlockNumber(_blockNumber);
         require(_blockNumber >= _safeSub(block.number, 256), "time has passed");
-        _checkTheBattleHasNotOccured(_challengeId);
+        _checkTheBattleHasNotOccurred(_challengeId);
         _checkTheChallengeIsNotCancelled(_challengeId);
 
         return random.randomOfBlock(2**256 - 1, _blockNumber);
@@ -332,12 +343,13 @@ contract GladiatorBattle is Upgradable {
         ); // 30% of bet to applicants
 
         bool _didCreatorWin = _creatorId == _winnerId;
-        uint256 _opponentBetsValue = spectatorsStorage.challengeBetsValue(_challengeId, !_didCreatorWin);
-        if (_rewardFromSpectatorsBets > 0) {
+        uint256 _winnerBetsValue = _getSpectatorsBetsValue(_challengeId, _didCreatorWin);
+        uint256 _opponentBetsValue = _getSpectatorsBetsValue(_challengeId, !_didCreatorWin);
+        if (_opponentBetsValue > 0 && _winnerBetsValue > 0) {
             uint256 _rewardFromSpectatorsBets = _opponentBetsValue.mul(15).div(100); // 15%
 
             uint256 _challengeBalance = spectatorsStorage.challengeBalance(_challengeId);
-            require(_challengeBalance >= _rewardFromSpectatorsBets, "not enouth coins, something went wrong");
+            require(_challengeBalance >= _rewardFromSpectatorsBets, "not enough coins, something went wrong");
 
             spectatorsStorage.payOut(_winner, isGold, _rewardFromSpectatorsBets);
 
@@ -454,7 +466,7 @@ contract GladiatorBattle is Upgradable {
         uint256 _challengeId
     ) external onlyController returns (uint256 newBattleBlockNumber) {
         _validateChallengeId(_challengeId);
-        _checkTheBattleHasNotOccured(_challengeId);
+        _checkTheBattleHasNotOccurred(_challengeId);
         _checkTheChallengeIsNotCancelled(_challengeId);
         uint256 _blockNumber = _getBattleBlockNumber(_challengeId);
         _checkBattleBlockNumber(_blockNumber);

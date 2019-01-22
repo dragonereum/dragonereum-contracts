@@ -124,16 +124,16 @@ contract GladiatorBattleSpectators is Upgradable {
         return battleStorage.battleOccurred(_challengeId);
     }
 
-    function _checkThatBattleHasNotOccured(
+    function _checkThatBattleHasNotOccurred(
         uint256 _challengeId
     ) internal view {
-        require(!_hasBattleOccurred(_challengeId), "the battle has already occured");
+        require(!_hasBattleOccurred(_challengeId), "the battle has already occurred");
     }
 
-    function _checkThatBattleHasOccured(
+    function _checkThatBattleHasOccurred(
         uint256 _challengeId
     ) internal view {
-        require(_hasBattleOccurred(_challengeId), "the battle has not yet occured");
+        require(_hasBattleOccurred(_challengeId), "the battle has not yet occurred");
     }
 
     function _checkThatWeDoNotKnowTheResult(
@@ -146,14 +146,25 @@ contract GladiatorBattleSpectators is Upgradable {
         );
     }
 
+    function _isWinningBet(
+        uint256 _challengeId,
+        bool _willCreatorWin
+    ) internal view returns (bool) {
+        (address _winner, ) = battleStorage.winner(_challengeId);
+        (address _creator, ) = battleStorage.creator(_challengeId);
+        bool _isCreatorWinner = _winner == _creator;
+        return _isCreatorWinner == _willCreatorWin;
+    }
+
     function _checkWinner(
         uint256 _challengeId,
         bool _willCreatorWin
     ) internal view {
-        (address _winner, ) = battleStorage.winner(_challengeId);
-        (address _creator, ) = battleStorage.creator(_challengeId);
-        bool _isCreatorWinner = _winner == _creator;
-        require(_isCreatorWinner == _willCreatorWin, "you did not win the bet");
+        require(_isWinningBet(_challengeId, _willCreatorWin), "you did not win the bet");
+    }
+
+    function _checkThatBetIsActive(bool _active) internal pure {
+        require(_active, "bet is not active");
     }
 
     function _payForBet(
@@ -192,8 +203,9 @@ contract GladiatorBattleSpectators is Upgradable {
     ) external onlyController returns (bool isGold) {
         _validateChallengeId(_challengeId);
         _checkThatOpponentIsSelected(_challengeId);
-        _checkThatBattleHasNotOccured(_challengeId);
+        _checkThatBattleHasNotOccurred(_challengeId);
         _checkThatWeDoNotKnowTheResult(_challengeId);
+        require(_value > 0, "a bet must be more than 0");
 
         isGold = _getChallengeCurrency(_challengeId);
         _payForBet(_ethValue, isGold, _value);
@@ -221,8 +233,6 @@ contract GladiatorBattleSpectators is Upgradable {
         uint256 _challengeId
     ) external onlyController {
         _validateChallengeId(_challengeId);
-        _checkThatBattleHasNotOccured(_challengeId);
-        _checkThatWeDoNotKnowTheResult(_challengeId);
 
         uint256 _betId = _storage_.userChallengeBetId(_user, _challengeId);
         (
@@ -230,10 +240,20 @@ contract GladiatorBattleSpectators is Upgradable {
             uint256 _realChallengeId,
             bool _willCreatorWin,
             uint256 _value,
+            bool _active
         ) = _storage_.allBets(_betId);
 
         require(_realUser == _user, "not your bet");
         require(_realChallengeId == _challengeId, "wrong challenge");
+        _checkThatBetIsActive(_active);
+
+        if (_hasBattleOccurred(_challengeId)) {
+            require(!_isWinningBet(_challengeId, _willCreatorWin), "request a reward instead");
+            uint256 _opponentBetsAmount = _getChallengeBetsAmount(_challengeId, !_willCreatorWin);
+            require(_opponentBetsAmount == 0, "your bet lost");
+        } else {
+            _checkThatWeDoNotKnowTheResult(_challengeId);
+        }
 
         _remove(_user, _challengeId, _betId);
 
@@ -260,14 +280,14 @@ contract GladiatorBattleSpectators is Upgradable {
         uint256 _challengeId
     ) external onlyController returns (uint256 reward, bool isGold) {
         _validateChallengeId(_challengeId);
-        _checkThatBattleHasOccured(_challengeId);
+        _checkThatBattleHasOccurred(_challengeId);
         (
             uint256 _betId,
             bool _willCreatorWin,
             uint256 _value,
             bool _active
         ) = _storage_.getUserBet(_user, _challengeId);
-        require(_active, "bet is not active");
+        _checkThatBetIsActive(_active);
 
         _checkWinner(_challengeId, _willCreatorWin);
 
@@ -281,7 +301,7 @@ contract GladiatorBattleSpectators is Upgradable {
         reward = reward.add(_value);
 
         uint256 _challengeBalance = _getChallengeBalance(_challengeId);
-        require(_challengeBalance >= reward, "not enouth coins, something went wrong");
+        require(_challengeBalance >= reward, "not enough coins, something went wrong");
 
         reward = _isLast ? _challengeBalance : reward; // get rid of inaccuracies of calculations
 
