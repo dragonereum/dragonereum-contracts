@@ -1394,6 +1394,67 @@ contract('MainBattleTests', async (accounts) => {
             betsGoldBalanceAfter.should.be.eq.BN(betsGoldBalanceBefore);
             userGoldBalanceAfter.should.be.eq.BN(userGoldBalanceBefore);
         });
+
+        it('return a bet if no bets on opponent', async () => {
+            const challengeId = await setBattle('chooseOpponent');
+
+            const user = senders[0];
+            const gasPrice = new BN(toWei('1', 'gwei'));
+            const bet = new BN(toWei('1'));
+            const willCreatorWin = false;
+
+            const amountBefore = await gladiatorBattleSpectatorsStorage.betsAmount();
+
+            const betsAmountsBefore = await gladiatorBattleSpectatorsStorage.getChallengeBetsAmount(challengeId);
+            const betsValuesBefore = await gladiatorBattleSpectatorsStorage.getChallengeBetsValue(challengeId);
+            const betsBalanceBefore = await gladiatorBattleSpectatorsStorage.challengeBalance(challengeId);
+            const userBalanceBefore = new BN(await web3.eth.getBalance(user));
+
+            let result = await mainBattle.placeSpectatorBetOnGladiatorBattle(
+                challengeId,
+                willCreatorWin,
+                bet,
+                { from: user, value: bet, gasPrice }
+            );
+            let burnedEth = gasPrice.mul(new BN(result.receipt.gasUsed));
+
+            const userBalanceAfterBet = new BN(await web3.eth.getBalance(user));
+            userBalanceBefore.should.be.eq.BN(userBalanceAfterBet.add(bet).add(burnedEth));
+
+            for (let i = 0; i < 5; i++) {
+                await mineBlock();
+            }
+            await mainBattle.startGladiatorBattle(challengeId, { from: user, gasPrice });
+
+            const userBet = await gladiatorBattleSpectatorsStorage.getUserBet(user, challengeId);
+
+            const userBalanceBeforeReturningBet = new BN(await web3.eth.getBalance(user));
+
+            result = await mainBattle.removeSpectatorBetFromGladiatorBattle(
+                challengeId,
+                { from: user, gasPrice }
+            );
+            burnedEth = gasPrice.mul(new BN(result.receipt.gasUsed));
+
+            const userBalanceAfterReturningBet = new BN(await web3.eth.getBalance(user));
+            userBalanceBeforeReturningBet.add(bet).should.be.eq.BN(userBalanceAfterReturningBet.add(burnedEth));
+
+            (await gladiatorBattleSpectatorsStorage.betsAmount()).should.be.eq.BN(amountBefore.add(new BN(1)));
+            await gladiatorBattleSpectatorsStorage.getUserBet(user, challengeId).should.be.rejected;
+
+            const betDetails = await gladiatorBattleSpectatorsStorage.allBets(userBet.betId);
+            betDetails.active.should.be.equal(false);
+
+            const betsAmountsAfter = await gladiatorBattleSpectatorsStorage.getChallengeBetsAmount(challengeId);
+            const betsValuesAfter = await gladiatorBattleSpectatorsStorage.getChallengeBetsValue(challengeId);
+            const betsBalanceAfter = await gladiatorBattleSpectatorsStorage.challengeBalance(challengeId);
+
+            betsAmountsAfter.onCreator.should.be.eq.BN(betsAmountsBefore.onCreator);
+            betsAmountsAfter.onOpponent.should.be.eq.BN(betsAmountsBefore.onOpponent);
+            betsValuesAfter.onCreator.should.be.eq.BN(betsValuesBefore.onCreator);
+            betsValuesAfter.onOpponent.should.be.eq.BN(betsValuesBefore.onOpponent);
+            betsBalanceAfter.should.be.eq.BN(betsBalanceBefore);
+        });
     });
 
     describe('#requestSpectatorRewardForGladiatorBattle', async () => {
