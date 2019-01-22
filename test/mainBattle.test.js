@@ -816,7 +816,11 @@ contract('MainBattleTests', async (accounts) => {
 
     describe('#startGladiatorBattle', async () => {
         it('should work', async () => {
-            const challengeId = await setBattle();
+            const challengeId = await setBattle('chooseOpponent', false, 10);
+            await placeSpectatorsBets(challengeId);
+            for (i = 0; i < 5; i++) {
+                await mineBlock();
+            }
             const myDragons = await dragonStorage.tokensOfOwner(senders[0]);
 
             const balanceBefore = await web3.eth.getBalance(senders[0]);
@@ -1137,6 +1141,28 @@ contract('MainBattleTests', async (accounts) => {
 
     }
 
+    async function placeSpectatorsBets(challengeId, isGold, bets = ['2', '1', '3', '0.5', '4']) {
+        const users = [senders[4], senders[5], senders[6], senders[7], owner];
+        const gasPrice = new BN(toWei('1', 'gwei'));
+
+        if (isGold) {
+            for (let i = 0; i < 5; i++) {
+                await gold.transfer(users[i], toWei(bets[i]), { from: teamAccount });
+            }
+        }
+
+        for (let i = 0; i < 5; i++) {
+            const bet = new BN(toWei(bets[i]));
+            const willCreatorWin = i < 2;
+            await mainBattle.placeSpectatorBetOnGladiatorBattle(
+                challengeId,
+                willCreatorWin,
+                bet,
+                { from: users[i], value: isGold ? 0 : bet, gasPrice }
+            );
+        }
+    }
+
     describe('#placeSpectatorBetOnGladiatorBattle', async () => {
         it('place a bet', async () => {
             const challengeId = await setBattle('chooseOpponent');
@@ -1371,28 +1397,6 @@ contract('MainBattleTests', async (accounts) => {
     });
 
     describe('#requestSpectatorRewardForGladiatorBattle', async () => {
-        async function placeBets(challengeId, isGold, bets = ['2', '1', '3', '0.5', '4']) {
-            const users = [senders[4], senders[5], senders[6], senders[7], owner];
-            const gasPrice = new BN(toWei('1', 'gwei'));
-
-            if (isGold) {
-                for (let i = 0; i < 5; i++) {
-                    await gold.transfer(users[i], toWei(bets[i]), { from: teamAccount });
-                }
-            }
-
-            for (let i = 0; i < 5; i++) {
-                const bet = new BN(toWei(bets[i]));
-                const willCreatorWin = i < 2;
-                await mainBattle.placeSpectatorBetOnGladiatorBattle(
-                    challengeId,
-                    willCreatorWin,
-                    bet,
-                    { from: users[i], value: isGold ? 0 : bet, gasPrice }
-                );
-            }
-        }
-
         async function getBalance(user, isGold) {
           if (isGold) {
               return new BN(await gold.balanceOf(user));
@@ -1441,7 +1445,7 @@ contract('MainBattleTests', async (accounts) => {
 
             const user = senders[4];
 
-            await placeBets(challengeId);
+            await placeSpectatorsBets(challengeId);
             for (i = 0; i < 5; i++) {
                 await mineBlock();
             }
@@ -1463,7 +1467,7 @@ contract('MainBattleTests', async (accounts) => {
 
                 const user = senders[4];
 
-                await placeBets(challengeId, false, bets[i]);
+                await placeSpectatorsBets(challengeId, false, bets[i]);
                 for (let i = 0; i < 5; i++) {
                     await mineBlock();
                 }
@@ -1488,7 +1492,7 @@ contract('MainBattleTests', async (accounts) => {
 
             const users = [senders[4], senders[5]];
 
-            await placeBets(challengeId);
+            await placeSpectatorsBets(challengeId);
             for (let i = 0; i < 5; i++) {
                 await mineBlock();
             }
@@ -1510,7 +1514,7 @@ contract('MainBattleTests', async (accounts) => {
 
             const users = [senders[4], senders[5]];
 
-            await placeBets(challengeId, true);
+            await placeSpectatorsBets(challengeId, true);
             for (let i = 0; i < 5; i++) {
                 await mineBlock();
             }
