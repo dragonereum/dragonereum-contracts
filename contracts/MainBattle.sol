@@ -353,7 +353,8 @@ contract MainBattle is Upgradable, Pausable, HumanOriented {
         uint16 _counter
     ) external payable onlyHuman whenNotPaused {
         address(gladiatorBattle).transfer(msg.value);
-        gladiatorBattle.create(msg.sender, _dragonId, _tactics, _isGold, _bet, _counter, msg.value);
+        uint256 _id = gladiatorBattle.create(msg.sender, _dragonId, _tactics, _isGold, _bet, _counter, msg.value);
+        events.emitGladiatorBattleCreated(_id, msg.sender, _dragonId, _bet, _isGold);
     }
 
     function applyForGladiatorBattle(
@@ -363,6 +364,7 @@ contract MainBattle is Upgradable, Pausable, HumanOriented {
     ) external payable onlyHuman whenNotPaused {
         address(gladiatorBattle).transfer(msg.value);
         gladiatorBattle.apply(_battleId, msg.sender, _dragonId, _tactics, msg.value);
+        events.emitGladiatorBattleApplicantAdded(_battleId, msg.sender, _dragonId);
     }
 
     function chooseOpponentForGladiatorBattle(
@@ -371,13 +373,15 @@ contract MainBattle is Upgradable, Pausable, HumanOriented {
         bytes32 _applicantsHash
     ) external onlyHuman whenNotPaused {
         gladiatorBattle.chooseOpponent(msg.sender, _battleId, _opponentId, _applicantsHash);
+        events.emitGladiatorBattleOpponentSelected(_battleId, _opponentId);
     }
 
     function autoSelectOpponentForGladiatorBattle(
         uint256 _battleId,
         bytes32 _applicantsHash
     ) external onlyHuman whenNotPaused {
-        gladiatorBattle.autoSelectOpponent(_battleId, _applicantsHash);
+        uint256 _opponentId = gladiatorBattle.autoSelectOpponent(_battleId, _applicantsHash);
+        events.emitGladiatorBattleOpponentSelected(_battleId, _opponentId);
     }
 
     function _emitGladiatorBattleEnded(
@@ -438,18 +442,22 @@ contract MainBattle is Upgradable, Pausable, HumanOriented {
         bytes32 _applicantsHash
     ) external onlyHuman whenNotPaused {
         gladiatorBattle.cancel(msg.sender, _battleId, _applicantsHash);
+        events.emitGladiatorBattleCancelled(_battleId);
     }
 
     function returnBetFromGladiatorBattle(uint256 _battleId) external onlyHuman whenNotPaused {
         gladiatorBattle.returnBet(msg.sender, _battleId);
+        events.emitGladiatorBattleBetReturned(_battleId, msg.sender);
     }
 
     function addTimeForOpponentSelectForGladiatorBattle(uint256 _battleId) external onlyHuman whenNotPaused {
-        gladiatorBattle.addTimeForOpponentSelect(msg.sender, _battleId);
+        uint256 _blockNumber = gladiatorBattle.addTimeForOpponentSelect(msg.sender, _battleId);
+        events.emitGladiatorBattleOpponentSelectTimeUpdated(_battleId, _blockNumber);
     }
 
     function updateBlockNumberOfGladiatorBattle(uint256 _battleId) external onlyHuman whenNotPaused {
-        gladiatorBattle.updateBattleBlockNumber(_battleId);
+        uint256 _blockNumber = gladiatorBattle.updateBattleBlockNumber(_battleId);
+        events.emitGladiatorBattleBlockNumberUpdated(_battleId, _blockNumber);
     }
 
     function placeSpectatorBetOnGladiatorBattle(
@@ -458,19 +466,22 @@ contract MainBattle is Upgradable, Pausable, HumanOriented {
         uint256 _value
     ) external payable onlyHuman whenNotPaused {
         address(gladiatorBattleSpectators).transfer(msg.value);
-        gladiatorBattleSpectators.placeBet(msg.sender, _battleId, _willCreatorWin, _value, msg.value);
+        bool _isGold = gladiatorBattleSpectators.placeBet(msg.sender, _battleId, _willCreatorWin, _value, msg.value);
+        events.emitGladiatorBattleSpectatorBetPlaced(_battleId, msg.sender, _willCreatorWin, _value, _isGold);
     }
 
     function removeSpectatorBetFromGladiatorBattle(
         uint256 _battleId
     ) external onlyHuman whenNotPaused {
         gladiatorBattleSpectators.removeBet(msg.sender, _battleId);
+        events.emitGladiatorBattleSpectatorBetRemoved(_battleId, msg.sender);
     }
 
     function requestSpectatorRewardForGladiatorBattle(
         uint256 _battleId
     ) external onlyHuman whenNotPaused {
-        gladiatorBattleSpectators.requestReward(msg.sender, _battleId);
+        (uint256 _reward, bool _isGold) = gladiatorBattleSpectators.requestReward(msg.sender, _battleId);
+        events.emitGladiatorBattleSpectatorRewardPaidOut(_battleId, msg.sender, _reward, _isGold);
     }
 
     // UPDATE CONTRACT
