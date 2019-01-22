@@ -87,6 +87,10 @@ contract GladiatorBattle is Upgradable {
         require(!_isOpponentSelected(_id), "opponent already selected");
     }
 
+    function _checkThatTimeHasCome(bool _bool) internal pure {
+        require(_bool, "time has not yet come");
+    }
+
     function _checkChallengeCreator(uint256 _id, address _user) internal view {
         (address _creator, ) = _getCreator(_id);
         require(_creator == _user, "not a challenge creator");
@@ -170,6 +174,13 @@ contract GladiatorBattle is Upgradable {
         uint256 _id
     ) internal view returns (address, uint256) {
         return _storage_.opponent(_id);
+    }
+
+    function _getSpectatorsBetsValue(
+        uint256 _challengeId,
+        bool _onCreator
+    ) internal view returns (uint256) {
+        return spectatorsStorage.challengeBetsValue(_challengeId, _onCreator);
     }
 
     function isDragonChallenging(uint256 _dragonId) public view returns (bool) {
@@ -262,7 +273,7 @@ contract GladiatorBattle is Upgradable {
         _compareApplicantsArrays(_challengeId, _applicantsHash);
         uint256 _autoSelectBlock = _storage_.autoSelectBlock(_challengeId);
         require(_autoSelectBlock != 0, "no auto select");
-        require(_autoSelectBlock <= block.number, "time has not yet come");
+        _checkThatTimeHasCome(_autoSelectBlock <= block.number);
 
         _checkForApplicants(_challengeId);
 
@@ -304,7 +315,7 @@ contract GladiatorBattle is Upgradable {
 
     function _checkBattleBlockNumber(uint256 _blockNumber) internal view {
         require(_blockNumber != 0, "opponent is not selected");
-        require(_blockNumber < block.number, "time has not yet come");
+        _checkThatTimeHasCome(_blockNumber < block.number);
     }
 
     function _checkBattlePossibilityAndGenerateRandom(uint256 _challengeId) internal view returns (uint256) {
@@ -332,8 +343,8 @@ contract GladiatorBattle is Upgradable {
         ); // 30% of bet to applicants
 
         bool _didCreatorWin = _creatorId == _winnerId;
-        uint256 _winnerBetsValue = spectatorsStorage.challengeBetsValue(_challengeId, _didCreatorWin);
-        uint256 _opponentBetsValue = spectatorsStorage.challengeBetsValue(_challengeId, !_didCreatorWin);
+        uint256 _winnerBetsValue = _getSpectatorsBetsValue(_challengeId, _didCreatorWin);
+        uint256 _opponentBetsValue = _getSpectatorsBetsValue(_challengeId, !_didCreatorWin);
         if (_opponentBetsValue > 0 && _winnerBetsValue > 0) {
             uint256 _rewardFromSpectatorsBets = _opponentBetsValue.mul(15).div(100); // 15%
 
