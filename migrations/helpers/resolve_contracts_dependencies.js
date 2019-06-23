@@ -1,4 +1,4 @@
-const { Graph } = require('@dagrejs/graphlib');
+const { Graph } = require('graphlib');
 
 const logger = require('./logger');
 const dotenv = require('dotenv');
@@ -61,7 +61,7 @@ async function createDependenciesGraph(contracts) {
       if (process.env.DEBUG === 'true') {
         console.log(`Setting dependencies for: ${contract.constructor.contractName}`);
       }
-      
+
       if (dependencies && dependencies.length) {
         acc.push(logger(
           contract.setInternalDependencies(dependencies.map(({ address }) => address), { gas: 550000 }),
