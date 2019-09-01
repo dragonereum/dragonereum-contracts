@@ -197,63 +197,116 @@ contract('BattleController', async (accounts) => {
             balanceAfter.should.be.eq.BN(balanceBefore.add(toBN(toWei('200'))));
         })
 
-        it('should less 200 at the middle game (winner is stronger)', async() => {
+        it('should reward no more than 200 if count of dragons is less than 3000 (winner is stronger)', async() => {
             const sender = senders[0];
             const dragonId = (await dragonStorage.tokensOfOwner(senders[0]))[0];
             const balanceBefore = await gold.balanceOf(sender);
             let winnerStrength = 11074;
             let looserStrength = 9000;
-            const treasuryBalance = await gold.balanceOf(treasury.address);
-            await treasury.giveGold(controller, toBN(treasuryBalance).sub(toBN(treasuryBalance).div(toBN('4'))), {from: controller});
-
-            await getter.setDragonsAmount(3000);
             let winFactor = await battleController.calculateGoldRewardFactor(winnerStrength, looserStrength);
+            await getter.setDragonsAmount(2000);
             await battleController.payGoldReward(sender, dragonId, winFactor);
 
             const balanceAfter = await gold.balanceOf(sender);
-            balanceAfter.sub(balanceBefore).should.be.lt.BN(toWei('200'));
+            balanceAfter.sub(balanceBefore).should.be.not.gt.BN(toWei('200'));
         })
 
-        it('should reward less than 200 if count of dragons is more 10k (winner is weaker)', async() => {
+        it('should reward no more than 100 if count of dragons is more than 3000 but less than 6000 (winner is stronger)', async() => {
             const sender = senders[0];
             const dragonId = (await dragonStorage.tokensOfOwner(senders[0]))[0];
             const balanceBefore = await gold.balanceOf(sender);
-            let winnerStrength = 9000;
-            let looserStrength = 11074;
+            let winnerStrength = 11074;
+            let looserStrength = 9000;
+            let winFactor = await battleController.calculateGoldRewardFactor(winnerStrength, looserStrength);
+            await getter.setDragonsAmount(5000);
+            await battleController.payGoldReward(sender, dragonId, winFactor);
+
+            const balanceAfter = await gold.balanceOf(sender);
+            balanceAfter.sub(balanceBefore).should.be.not.gt.BN(toWei('100'));
+        })
+
+        it('should reward no more than 50 if count of dragons is more than 6000 but less than 9000 (winner is stronger)', async() => {
+            const sender = senders[0];
+            const dragonId = (await dragonStorage.tokensOfOwner(senders[0]))[0];
+            const balanceBefore = await gold.balanceOf(sender);
+            let winnerStrength = 11074;
+            let looserStrength = 9000;
+            let winFactor = await battleController.calculateGoldRewardFactor(winnerStrength, looserStrength);
+            await getter.setDragonsAmount(8000);
+            await battleController.payGoldReward(sender, dragonId, winFactor);
+
+            const balanceAfter = await gold.balanceOf(sender);
+            balanceAfter.sub(balanceBefore).should.be.not.gt.BN(toWei('50'));
+        })
+
+        it('should reward no more than 25 if count of dragons is more than 9000 but less than 12000 (winner is stronger)', async() => {
+            const sender = senders[0];
+            const dragonId = (await dragonStorage.tokensOfOwner(senders[0]))[0];
+            const balanceBefore = await gold.balanceOf(sender);
+            let winnerStrength = 11074;
+            let looserStrength = 9000;
             let winFactor = await battleController.calculateGoldRewardFactor(winnerStrength, looserStrength);
             await getter.setDragonsAmount(10000);
             await battleController.payGoldReward(sender, dragonId, winFactor);
 
             const balanceAfter = await gold.balanceOf(sender);
-            balanceAfter.should.be.eq.BN(balanceBefore.add(toBN(toWei('200'))));
+            balanceAfter.sub(balanceBefore).should.be.not.gt.BN(toWei('25'));
         })
 
-        it('should reward less than 200 if count of dragons is more 10k (winner is stronger)', async() => {
+        it('should reward no more than 12.5 if count of dragons is more than 12000 but less than 15000 (winner is stronger)', async() => {
             const sender = senders[0];
             const dragonId = (await dragonStorage.tokensOfOwner(senders[0]))[0];
             const balanceBefore = await gold.balanceOf(sender);
             let winnerStrength = 11074;
             let looserStrength = 9000;
             let winFactor = await battleController.calculateGoldRewardFactor(winnerStrength, looserStrength);
-            await getter.setDragonsAmount(10000);
+            await getter.setDragonsAmount(14000);
             await battleController.payGoldReward(sender, dragonId, winFactor);
 
             const balanceAfter = await gold.balanceOf(sender);
-            balanceAfter.sub(balanceBefore).should.be.lt.BN(toWei('200'));
+            balanceAfter.sub(balanceBefore).should.be.not.gt.BN(toWei('12.5'));
         })
 
-        it('should reward less than 150 if count of dragons is more 15k (winner is stronger)', async() => {
+        it('should reward no more than 6.25 if count of dragons is more than 15000 but less than 18000 (winner is stronger)', async() => {
             const sender = senders[0];
             const dragonId = (await dragonStorage.tokensOfOwner(senders[0]))[0];
             const balanceBefore = await gold.balanceOf(sender);
             let winnerStrength = 11074;
             let looserStrength = 9000;
             let winFactor = await battleController.calculateGoldRewardFactor(winnerStrength, looserStrength);
-            await getter.setDragonsAmount(15000);
+            await getter.setDragonsAmount(17000);
             await battleController.payGoldReward(sender, dragonId, winFactor);
 
             const balanceAfter = await gold.balanceOf(sender);
-            balanceAfter.sub(balanceBefore).should.be.lt.BN(toWei('200'));
+            balanceAfter.sub(balanceBefore).should.be.not.gt.BN(toWei('6.25'));
+        })
+
+        it('should reward no more than 3.125 if count of dragons is more than 18000 but less than 21000 (winner is stronger)', async() => {
+            const sender = senders[0];
+            const dragonId = (await dragonStorage.tokensOfOwner(senders[0]))[0];
+            const balanceBefore = await gold.balanceOf(sender);
+            let winnerStrength = 11074;
+            let looserStrength = 9000;
+            let winFactor = await battleController.calculateGoldRewardFactor(winnerStrength, looserStrength);
+            await getter.setDragonsAmount(20000);
+            await battleController.payGoldReward(sender, dragonId, winFactor);
+
+            const balanceAfter = await gold.balanceOf(sender);
+            balanceAfter.sub(balanceBefore).should.be.not.gt.BN(toWei('3.125'));
+        })
+
+        it('should reward no more than 1.5625 if count of dragons is more than 21000 (winner is stronger)', async() => {
+            const sender = senders[0];
+            const dragonId = (await dragonStorage.tokensOfOwner(senders[0]))[0];
+            const balanceBefore = await gold.balanceOf(sender);
+            let winnerStrength = 11074;
+            let looserStrength = 9000;
+            let winFactor = await battleController.calculateGoldRewardFactor(winnerStrength, looserStrength);
+            await getter.setDragonsAmount(25000);
+            await battleController.payGoldReward(sender, dragonId, winFactor);
+
+            const balanceAfter = await gold.balanceOf(sender);
+            balanceAfter.sub(balanceBefore).should.be.not.gt.BN(toWei('1.5625'));
         })
     })
 })
