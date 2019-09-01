@@ -69,7 +69,7 @@ contract CoreController is Upgradable {
 
         uint256 _hatchingPrice = treasury.hatchingPrice();
         treasury.takeGold(_hatchingPrice);
-        if (getter.getDragonsAmount() > 9997) { // 9997 + 2 (in the nest) + 1 (just sent) = 10000 dragons without gold burning
+        if (getter.getDragonsAmount() > 2997) { // 2997 + 2 (in the nest) + 1 (just sent) = 3000 dragons without gold burning
             treasury.burnGold(_hatchingPrice.div(2));
         }
 
