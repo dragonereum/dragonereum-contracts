@@ -35,6 +35,7 @@ contract BattleController is Upgradable {
     uint8 constant MIN_TACTICS_PERCENTAGE = 20;
     uint8 constant PERCENT_MULTIPLIER = 100;
     uint8 constant DRAGON_STRENGTH_DIFFERENCE_PERCENTAGE = 10;
+    uint32 constant MAX_GOLD_REWARD_MULTIPLIER = 100000;
 
     uint256 constant GOLD_REWARD_MULTIPLIER = 10 ** 18;
 
@@ -199,13 +200,18 @@ contract BattleController is Upgradable {
         uint256 _hatchingPrice,
         uint256 _dragonsAmount
     ) internal pure returns (uint256) {
-        uint8 _factor;
+        uint32 _factor;
 
-        if (_dragonsAmount < 15000) _factor = 20;
-        else if (_dragonsAmount < 30000) _factor = 10;
-        else _factor = 5;
+        if (_dragonsAmount < 3000) _factor = 2000000; // Hydrogen Eon
+        else if (_dragonsAmount < 6000) _factor = 1000000; // Helium Eon
+        else if (_dragonsAmount < 9000) _factor = 500000; // Carbon Eon
+        else if (_dragonsAmount < 12000) _factor = 250000; // Oxygen Eon
+        else if (_dragonsAmount < 15000) _factor = 125000; // Silicon Eon
+        else if (_dragonsAmount < 18000) _factor = 62500; // Titanium Eon
+        else if (_dragonsAmount < 21000) _factor = 31250; // Silver Eon
+        else _factor = 15625; // Gold Eon
 
-        return _hatchingPrice.mul(_factor).div(PERCENT_MULTIPLIER);
+        return _hatchingPrice.mul(_factor).div(MAX_GOLD_REWARD_MULTIPLIER);
     }
 
     function _payGoldReward(
