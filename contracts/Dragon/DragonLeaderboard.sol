@@ -14,7 +14,7 @@ contract DragonLeaderboard is Upgradable {
     Leaderboard[10] leaderboard;
 
     uint256 constant REWARDED_DRAGONS_AMOUNT = 10;
-    uint256 constant DISTRIBUTED_FRACTION_OF_REMAINING_GOLD = 10000;
+    uint256 constant DISTRIBUTING_FRACTION_OF_REMAINING_GOLD = 10000;
     uint256 rewardPeriod = 24 hours;
     uint256 lastRewardDate;
 
@@ -85,7 +85,7 @@ contract DragonLeaderboard is Upgradable {
     function getRewards(uint256 _remainingGold) external view returns (uint256[10] rewards) {
         for (uint8 i = 0; i < REWARDED_DRAGONS_AMOUNT; i++) {
             rewards[i] = _remainingGold.mul(uint256(2).pow(REWARDED_DRAGONS_AMOUNT.sub(1))).div(
-                DISTRIBUTED_FRACTION_OF_REMAINING_GOLD.mul((uint256(2).pow(REWARDED_DRAGONS_AMOUNT)).sub(1)).mul(uint256(2).pow(i))
+                DISTRIBUTING_FRACTION_OF_REMAINING_GOLD.mul((uint256(2).pow(REWARDED_DRAGONS_AMOUNT)).sub(1)).mul(uint256(2).pow(i))
             );
         }
     }
