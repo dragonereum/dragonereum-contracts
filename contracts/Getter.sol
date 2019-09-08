@@ -275,7 +275,7 @@ contract Getter is Upgradable {
     }
 
     function getLeaderboardRewards() external view returns (uint256[10]) {
-        return core.getLeaderboardRewards(treasury.hatchingPrice());
+        return core.getLeaderboardRewards(treasury.remainingGold());
     }
 
     function getLeaderboardRewardDate() external view returns (uint256 lastRewardDate, uint256 rewardPeriod) {

@@ -248,11 +248,11 @@ contract Core is Upgradable {
     }
 
     function getLeaderboardRewards(
-        uint256 _hatchingPrice
+        uint256 _remainingGold
     ) external view returns (
         uint256[10]
     ) {
-        return leaderboard.getRewards(_hatchingPrice);
+        return leaderboard.getRewards(_remainingGold);
     }
 
     function getLeaderboardRewardDate() external view returns (uint256, uint256) {
