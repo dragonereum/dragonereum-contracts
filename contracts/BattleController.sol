@@ -35,7 +35,7 @@ contract BattleController is Upgradable {
     uint8 constant MIN_TACTICS_PERCENTAGE = 20;
     uint8 constant PERCENT_MULTIPLIER = 100;
     uint8 constant DRAGON_STRENGTH_DIFFERENCE_PERCENTAGE = 10;
-    uint32 constant MAX_GOLD_REWARD_MULTIPLIER = 100000;
+    uint32 constant MAX_GOLD_REWARD_MULTIPLIER = 10000000;
 
     uint256 constant GOLD_REWARD_MULTIPLIER = 10 ** 18;
 
