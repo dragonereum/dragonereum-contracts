@@ -726,14 +726,15 @@ contract('MainBaseTests', async (accounts) => {
 
     describe('#distributeLeaderboardRewards', async () => {
         it('should work', async () => {
-            const hatchingPrice = await treasury.hatchingPrice();
-            const rewardCoefficients = [50, 45, 40, 35, 30, 25, 20, 15, 10, 5];
+            const remainingGold = await treasury.remainingGold();
+            const DISTRIBUTED_FRACTION_OF_REMAINING_GOLD = 10000;
+            const REWARDED_DRAGONS_AMOUNT = 10;
             const senders = [accounts[0], accounts[1], accounts[2], accounts[3], accounts[4], accounts[5], accounts[6], accounts[7], accounts[8], accounts[9]];
             let dragonIds = await createDragons(10, senders);
 
             let positions = await dragonLeaderboard.getDragonsFromLeaderboard();
             let balancesBefore = [];
-            for(i=0; i< positions.length; i++) {
+            for (let i = 0; i < positions.length; i++) {
                 let owner = await getter.ownerOfDragon(positions[i]);
                 balancesBefore.push(await gold.balanceOf(owner));
             }
@@ -743,12 +744,14 @@ contract('MainBaseTests', async (accounts) => {
             await mainBase.distributeLeaderboardRewards();
 
             let balancesAfter = [];
-            for(i=0; i< positions.length; i++) {
+            for (let i = 0; i < positions.length; i++) {
                 let owner = await getter.ownerOfDragon(positions[i]);
                 balancesAfter.push(await gold.balanceOf(owner));
             }
-            for(i=0; i< positions.length; i++) {
-                let reward = hatchingPrice.mul(toBN(rewardCoefficients[i])).div(toBN(10));
+            for(let i = 0; i < positions.length; i++) {
+                let reward = remainingGold.mul(toBN(2).pow(toBN(REWARDED_DRAGONS_AMOUNT).sub(toBN(1)))).div(
+                  toBN(DISTRIBUTED_FRACTION_OF_REMAINING_GOLD).mul((toBN(2).pow(toBN(REWARDED_DRAGONS_AMOUNT))).sub(toBN(1))).mul(toBN(2).pow(toBN(i)))
+                );
                 toBN(balancesAfter[i]).sub(toBN(balancesBefore[i])).should.be.eq.BN(reward);
             }
         })
