@@ -15,7 +15,6 @@
     "dotenv": "^8.0.0",
     "husky": "^2.4.1",
     "lint-staged": "^8.2.1",
-    "solium": "^1.2.4",
     "truffle": "^5.0.24",
     "truffle-hdwallet-provider": "^1.0.11"
   },
@@ -23,11 +22,12 @@
     "bn-chai": "^1.0.1",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
-    "web3-provider-engine": "^14.1.0",
-    "web3": "1.0.0-beta.37"
+    "solhint": "^2.3.0",
+    "web3": "1.0.0-beta.37",
+    "web3-provider-engine": "^14.1.0"
   },
   "scripts": {
-    "lint": "solium -d contracts/",
+    "lint": "solhint contracts/**/*.sol",
     "test": "truffle test",
     "develop": "truffle develop",
     "build": "node scripts/build --clear --input build_contracts --output dist"
@@ -39,7 +39,7 @@
   },
   "lint-staged": {
     "contracts/**/*.sol": [
-      "solium -f"
+      "solhint"
     ]
   }
 }
