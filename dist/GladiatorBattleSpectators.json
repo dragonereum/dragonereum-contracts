@@ -5,6 +5,104 @@
       "constant": false,
       "inputs": [
         {
+          "name": "_newDependencies",
+          "type": "address[]"
+        }
+      ],
+      "name": "setExternalDependencies",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x65fc1253"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x8da5cb5b"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getInternalDependencies",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xb75c4f80"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getExternalDependencies",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xe6458f6e"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xf2fde38b"
+    },
+    {
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "fallback"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event",
+      "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
           "name": "_user",
           "type": "address"
         },
@@ -34,77 +132,8 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_newDependencies",
-          "type": "address[]"
-        }
-      ],
-      "name": "setExternalDependencies",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_newDependencies",
-          "type": "address[]"
-        }
-      ],
-      "name": "setInternalDependencies",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "owner",
-      "outputs": [
-        {
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "getInternalDependencies",
-      "outputs": [
-        {
-          "name": "",
-          "type": "address[]"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "getExternalDependencies",
-      "outputs": [
-        {
-          "name": "",
-          "type": "address[]"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x519168c6"
     },
     {
       "constant": false,
@@ -122,21 +151,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "newOwner",
-          "type": "address"
-        }
-      ],
-      "name": "transferOwnership",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0xeb2138a5"
     },
     {
       "constant": false,
@@ -163,29 +179,23 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0xf8f5ca3a"
     },
     {
-      "payable": true,
-      "stateMutability": "payable",
-      "type": "fallback"
-    },
-    {
-      "anonymous": false,
+      "constant": false,
       "inputs": [
         {
-          "indexed": true,
-          "name": "previousOwner",
-          "type": "address"
-        },
-        {
-          "indexed": true,
-          "name": "newOwner",
-          "type": "address"
+          "name": "_newDependencies",
+          "type": "address[]"
         }
       ],
-      "name": "OwnershipTransferred",
-      "type": "event"
+      "name": "setInternalDependencies",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x69c0ad93"
     }
   ],
   "networks": {
@@ -211,8 +221,8 @@
         }
       },
       "links": {},
-      "address": "0x310526b4e4b78705EcAf644F01FB7631f3b77CB1",
-      "transactionHash": "0xd5e40ab91b27d445dea48514e2183900badbdf9beca3b3446833f3f3aa440d65"
+      "address": "0x0b06e3af97Ede6FfA27a555D06653e0c364f001B",
+      "transactionHash": "0x80310f92f574face15e42deae0c7ea73bd665b7cec33a65386d72a9da168de44"
     }
   },
   "updatedAt": "2018-11-28T21:04:49.204Z"

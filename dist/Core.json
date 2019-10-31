@@ -3,207 +3,6 @@
   "abi": [
     {
       "constant": false,
-      "inputs": [],
-      "name": "updateLeaderboardRewardTime",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_sender",
-          "type": "address"
-        },
-        {
-          "name": "_momId",
-          "type": "uint256"
-        },
-        {
-          "name": "_dadId",
-          "type": "uint256"
-        }
-      ],
-      "name": "breed",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_id",
-          "type": "uint256"
-        },
-        {
-          "name": "_factor",
-          "type": "uint256"
-        }
-      ],
-      "name": "increaseDragonExperience",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_id",
-          "type": "uint256"
-        }
-      ],
-      "name": "increaseDragonWins",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_id",
-          "type": "uint256"
-        },
-        {
-          "name": "_dnaPoints",
-          "type": "uint16[10]"
-        }
-      ],
-      "name": "upgradeDragonGenes",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_id",
-          "type": "uint256"
-        }
-      ],
-      "name": "getDragonFullRegenerationTime",
-      "outputs": [
-        {
-          "name": "time",
-          "type": "uint32"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_user",
-          "type": "address"
-        },
-        {
-          "name": "_tokenId",
-          "type": "uint256"
-        }
-      ],
-      "name": "isEggOwner",
-      "outputs": [
-        {
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_id",
-          "type": "uint256"
-        },
-        {
-          "name": "_melee",
-          "type": "uint8"
-        },
-        {
-          "name": "_attack",
-          "type": "uint8"
-        }
-      ],
-      "name": "setDragonTactics",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "getLeaderboardRewardDate",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        },
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_value",
-          "type": "uint256"
-        }
-      ],
-      "name": "setCooldown",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_id",
-          "type": "uint256"
-        }
-      ],
-      "name": "isEggInNest",
-      "outputs": [
-        {
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": false,
       "inputs": [
         {
           "name": "_newDependencies",
@@ -214,82 +13,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_id",
-          "type": "uint256"
-        }
-      ],
-      "name": "resetDragonBuffs",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_newDependencies",
-          "type": "address[]"
-        }
-      ],
-      "name": "setInternalDependencies",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_id",
-          "type": "uint256"
-        }
-      ],
-      "name": "increaseDragonDefeats",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "getDragonsFromLeaderboard",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256[10]"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "name": "lastPeacefulSkillsUsageDates",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x65fc1253"
     },
     {
       "constant": true,
@@ -303,66 +28,71 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_sender",
-          "type": "address"
-        },
-        {
-          "name": "_id",
-          "type": "uint256"
-        },
-        {
-          "name": "_target",
-          "type": "uint256"
-        }
-      ],
-      "name": "useDragonSpecialPeacefulSkill",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_id",
-          "type": "uint256"
-        },
-        {
-          "name": "_name",
-          "type": "string"
-        }
-      ],
-      "name": "setDragonName",
-      "outputs": [
-        {
-          "name": "",
-          "type": "bytes32"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x8da5cb5b"
     },
     {
       "constant": true,
       "inputs": [],
-      "name": "getEggsInNest",
+      "name": "getInternalDependencies",
       "outputs": [
         {
           "name": "",
-          "type": "uint256[2]"
+          "type": "address[]"
         }
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0xb75c4f80"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getExternalDependencies",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xe6458f6e"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xf2fde38b"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event",
+      "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
     },
     {
       "constant": false,
@@ -385,75 +115,8 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "getInternalDependencies",
-      "outputs": [
-        {
-          "name": "",
-          "type": "address[]"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_id",
-          "type": "uint256"
-        },
-        {
-          "name": "_health",
-          "type": "uint32"
-        },
-        {
-          "name": "_mana",
-          "type": "uint32"
-        }
-      ],
-      "name": "setDragonRemainingHealthAndMana",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_id",
-          "type": "uint256"
-        },
-        {
-          "name": "_class",
-          "type": "uint8"
-        }
-      ],
-      "name": "setDragonSpecialPeacefulSkill",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "peacefulSkillCooldown",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0xb0866bc7"
     },
     {
       "constant": false,
@@ -484,40 +147,241 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0xd2d21e85"
     },
     {
-      "constant": true,
+      "constant": false,
       "inputs": [
         {
-          "name": "_hatchingPrice",
+          "name": "_sender",
+          "type": "address"
+        },
+        {
+          "name": "_momId",
+          "type": "uint256"
+        },
+        {
+          "name": "_dadId",
           "type": "uint256"
         }
       ],
-      "name": "getLeaderboardRewards",
+      "name": "breed",
       "outputs": [
         {
           "name": "",
-          "type": "uint256[10]"
+          "type": "uint256"
         }
       ],
       "payable": false,
-      "stateMutability": "view",
-      "type": "function"
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x12e3fe10"
     },
     {
-      "constant": true,
-      "inputs": [],
-      "name": "getExternalDependencies",
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256"
+        },
+        {
+          "name": "_health",
+          "type": "uint32"
+        },
+        {
+          "name": "_mana",
+          "type": "uint32"
+        }
+      ],
+      "name": "setDragonRemainingHealthAndMana",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xbf7de620"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256"
+        },
+        {
+          "name": "_factor",
+          "type": "uint256"
+        }
+      ],
+      "name": "increaseDragonExperience",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x14521d3c"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256"
+        },
+        {
+          "name": "_dnaPoints",
+          "type": "uint16[10]"
+        }
+      ],
+      "name": "upgradeDragonGenes",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x35c0cbaf"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "increaseDragonWins",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x1cc1147f"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "increaseDragonDefeats",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x7c328980"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256"
+        },
+        {
+          "name": "_melee",
+          "type": "uint8"
+        },
+        {
+          "name": "_attack",
+          "type": "uint8"
+        }
+      ],
+      "name": "setDragonTactics",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x466d3d38"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256"
+        },
+        {
+          "name": "_name",
+          "type": "string"
+        }
+      ],
+      "name": "setDragonName",
       "outputs": [
         {
           "name": "",
-          "type": "address[]"
+          "type": "bytes32"
         }
       ],
       "payable": false,
-      "stateMutability": "view",
-      "type": "function"
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x99d76e49"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256"
+        },
+        {
+          "name": "_class",
+          "type": "uint8"
+        }
+      ],
+      "name": "setDragonSpecialPeacefulSkill",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xc718640a"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_sender",
+          "type": "address"
+        },
+        {
+          "name": "_id",
+          "type": "uint256"
+        },
+        {
+          "name": "_target",
+          "type": "uint256"
+        }
+      ],
+      "name": "useDragonSpecialPeacefulSkill",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x978ee4e0"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "resetDragonBuffs",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x68662301"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "updateLeaderboardRewardTime",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x068d1fb8"
     },
     {
       "constant": true,
@@ -527,34 +391,76 @@
           "type": "uint256"
         }
       ],
-      "name": "getDragonChildren",
+      "name": "getDragonFullRegenerationTime",
       "outputs": [
         {
-          "name": "dragonsChildren",
-          "type": "uint256[10]"
-        },
-        {
-          "name": "eggsChildren",
-          "type": "uint256[10]"
+          "name": "time",
+          "type": "uint32"
         }
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x3c6f730e"
     },
     {
-      "constant": false,
+      "constant": true,
       "inputs": [
         {
-          "name": "newOwner",
+          "name": "_user",
           "type": "address"
+        },
+        {
+          "name": "_tokenId",
+          "type": "uint256"
         }
       ],
-      "name": "transferOwnership",
-      "outputs": [],
+      "name": "isEggOwner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
       "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x45ada01f"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "isEggInNest",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x591aab0f"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getEggsInNest",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256[2]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xa2f36cfd"
     },
     {
       "constant": true,
@@ -589,30 +495,101 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0xfeb40f7e"
     },
     {
-      "inputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "constructor"
-    },
-    {
-      "anonymous": false,
+      "constant": true,
       "inputs": [
         {
-          "indexed": true,
-          "name": "previousOwner",
-          "type": "address"
-        },
-        {
-          "indexed": true,
-          "name": "newOwner",
-          "type": "address"
+          "name": "_id",
+          "type": "uint256"
         }
       ],
-      "name": "OwnershipTransferred",
-      "type": "event"
+      "name": "getDragonChildren",
+      "outputs": [
+        {
+          "name": "dragonsChildren",
+          "type": "uint256[10]"
+        },
+        {
+          "name": "eggsChildren",
+          "type": "uint256[10]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xee55f77b"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getDragonsFromLeaderboard",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256[10]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x80deece5"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_hatchingPrice",
+          "type": "uint256"
+        }
+      ],
+      "name": "getLeaderboardRewards",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256[10]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xdc24838a"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getLeaderboardRewardDate",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x48939e40"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_newDependencies",
+          "type": "address[]"
+        }
+      ],
+      "name": "setInternalDependencies",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x69c0ad93"
     }
   ],
   "networks": {
@@ -638,8 +615,8 @@
         }
       },
       "links": {},
-      "address": "0xa4ec8e6ce545dfc3197724bec6db486b1558a35e",
-      "transactionHash": "0x3c3ecc60888c54baf90081e21d59a1e7c420270c4d2134ccdcca522e8ff03920"
+      "address": "0xf5c6acb57F13de23b2140B0b399Cd7EeaE800Ff8",
+      "transactionHash": "0xa4dc03b4b529ba53b8839e4c087ce3a4e8bf770d82aefad723538abd96f01322"
     }
   },
   "updatedAt": "2018-11-28T21:04:49.248Z"
