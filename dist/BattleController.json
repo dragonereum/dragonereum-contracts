@@ -2,6 +2,25 @@
   "contractName": "BattleController",
   "abi": [
     {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_attackerId",
+          "type": "uint256"
+        }
+      ],
+      "name": "matchOpponents",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256[6]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "constant": false,
       "inputs": [
         {
@@ -13,8 +32,35 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0x65fc1253"
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "resetDragonBuffs",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_newDependencies",
+          "type": "address[]"
+        }
+      ],
+      "name": "setInternalDependencies",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
       "constant": true,
@@ -28,8 +74,7 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function",
-      "signature": "0x8da5cb5b"
+      "type": "function"
     },
     {
       "constant": true,
@@ -43,56 +88,7 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function",
-      "signature": "0xb75c4f80"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "getExternalDependencies",
-      "outputs": [
-        {
-          "name": "",
-          "type": "address[]"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function",
-      "signature": "0xe6458f6e"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "newOwner",
-          "type": "address"
-        }
-      ],
-      "name": "transferOwnership",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0xf2fde38b"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "name": "previousOwner",
-          "type": "address"
-        },
-        {
-          "indexed": true,
-          "name": "newOwner",
-          "type": "address"
-        }
-      ],
-      "name": "OwnershipTransferred",
-      "type": "event",
-      "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+      "type": "function"
     },
     {
       "constant": false,
@@ -131,58 +127,52 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0xd71c9cf3"
+      "type": "function"
     },
     {
       "constant": true,
-      "inputs": [
-        {
-          "name": "_attackerId",
-          "type": "uint256"
-        }
-      ],
-      "name": "matchOpponents",
+      "inputs": [],
+      "name": "getExternalDependencies",
       "outputs": [
         {
           "name": "",
-          "type": "uint256[6]"
+          "type": "address[]"
         }
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function",
-      "signature": "0x5cc53bc7"
+      "type": "function"
     },
     {
       "constant": false,
       "inputs": [
         {
-          "name": "_id",
-          "type": "uint256"
+          "name": "newOwner",
+          "type": "address"
         }
       ],
-      "name": "resetDragonBuffs",
+      "name": "transferOwnership",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0x68662301"
+      "type": "function"
     },
     {
-      "constant": false,
+      "anonymous": false,
       "inputs": [
         {
-          "name": "_newDependencies",
-          "type": "address[]"
+          "indexed": true,
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "newOwner",
+          "type": "address"
         }
       ],
-      "name": "setInternalDependencies",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0x69c0ad93"
+      "name": "OwnershipTransferred",
+      "type": "event"
     }
   ],
   "networks": {
@@ -208,8 +198,8 @@
         }
       },
       "links": {},
-      "address": "0x94e34F68d66b5DD954b56A513cf7c48f08036F19",
-      "transactionHash": "0xbbdfd6021ff04b2b5fa421aaea0bd9dca49dc072e3bf110a83ec1dd1b607f096"
+      "address": "0x63162149c4786cd8C8b98d301292e1D53E655474",
+      "transactionHash": "0x7360f83b7fc6c3e67beec31f5346b69b610d8e46b0767cc80afaebb4646ba667"
     }
   },
   "updatedAt": "2018-11-28T21:04:49.321Z"

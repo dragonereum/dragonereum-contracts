@@ -2,6 +2,24 @@
   "contractName": "DragonLeaderboard",
   "abi": [
     {
+      "constant": true,
+      "inputs": [],
+      "name": "getDate",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "constant": false,
       "inputs": [
         {
@@ -13,8 +31,7 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0x65fc1253"
+      "type": "function"
     },
     {
       "constant": false,
@@ -28,8 +45,21 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0x69c0ad93"
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getDragonsFromLeaderboard",
+      "outputs": [
+        {
+          "name": "result",
+          "type": "uint256[10]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
     },
     {
       "constant": true,
@@ -43,8 +73,7 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function",
-      "signature": "0x8da5cb5b"
+      "type": "function"
     },
     {
       "constant": true,
@@ -58,63 +87,26 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function",
-      "signature": "0xb75c4f80"
+      "type": "function"
     },
     {
       "constant": true,
-      "inputs": [],
-      "name": "getExternalDependencies",
+      "inputs": [
+        {
+          "name": "_remainingGold",
+          "type": "uint256"
+        }
+      ],
+      "name": "getRewards",
       "outputs": [
         {
-          "name": "",
-          "type": "address[]"
+          "name": "rewards",
+          "type": "uint256[10]"
         }
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function",
-      "signature": "0xe6458f6e"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "newOwner",
-          "type": "address"
-        }
-      ],
-      "name": "transferOwnership",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0xf2fde38b"
-    },
-    {
-      "inputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "constructor",
-      "signature": "constructor"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "name": "previousOwner",
-          "type": "address"
-        },
-        {
-          "indexed": true,
-          "name": "newOwner",
-          "type": "address"
-        }
-      ],
-      "name": "OwnershipTransferred",
-      "type": "event",
-      "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+      "type": "function"
     },
     {
       "constant": false,
@@ -132,23 +124,21 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0xcebab53d"
+      "type": "function"
     },
     {
       "constant": true,
       "inputs": [],
-      "name": "getDragonsFromLeaderboard",
+      "name": "getExternalDependencies",
       "outputs": [
         {
-          "name": "result",
-          "type": "uint256[10]"
+          "name": "",
+          "type": "address[]"
         }
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function",
-      "signature": "0x80deece5"
+      "type": "function"
     },
     {
       "constant": false,
@@ -157,47 +147,44 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0xf146da5b"
+      "type": "function"
     },
     {
-      "constant": true,
+      "constant": false,
       "inputs": [
         {
-          "name": "_hatchingPrice",
-          "type": "uint256"
+          "name": "newOwner",
+          "type": "address"
         }
       ],
-      "name": "getRewards",
-      "outputs": [
-        {
-          "name": "rewards",
-          "type": "uint256[10]"
-        }
-      ],
+      "name": "transferOwnership",
+      "outputs": [],
       "payable": false,
-      "stateMutability": "view",
-      "type": "function",
-      "signature": "0xc0d8012c"
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
-      "constant": true,
       "inputs": [],
-      "name": "getDate",
-      "outputs": [
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
         {
-          "name": "",
-          "type": "uint256"
+          "indexed": true,
+          "name": "previousOwner",
+          "type": "address"
         },
         {
-          "name": "",
-          "type": "uint256"
+          "indexed": true,
+          "name": "newOwner",
+          "type": "address"
         }
       ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function",
-      "signature": "0x430fe9c1"
+      "name": "OwnershipTransferred",
+      "type": "event"
     }
   ],
   "networks": {
@@ -223,8 +210,8 @@
         }
       },
       "links": {},
-      "address": "0x556b52af1930BDfDDe016851ce078B352ef643e5",
-      "transactionHash": "0x4dc49b0bfb10c9fb486032a354d506b80c955eb928bc375295a2accc4e1f70a3"
+      "address": "0x19Bed777222f798b1Fbf967D98cbF2380944b492",
+      "transactionHash": "0x80d564e45c3d0646dc33c9ccdeac95740b639ffe6db7cd53041bce87f87568fa"
     }
   },
   "updatedAt": "2018-11-28T21:04:49.069Z"
