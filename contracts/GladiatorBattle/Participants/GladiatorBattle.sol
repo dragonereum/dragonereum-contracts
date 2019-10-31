@@ -87,7 +87,7 @@ contract GladiatorBattle is Upgradable {
         require(!_isOpponentSelected(_id), "opponent already selected");
     }
 
-    function _checkThatTimeHasCome(uint256 _blockNumber) internal pure {
+    function _checkThatTimeHasCome(uint256 _blockNumber) internal view {
         require(_blockNumber <= block.number, "time has not yet come");
     }
 
