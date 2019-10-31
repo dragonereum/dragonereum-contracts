@@ -22,7 +22,8 @@ contract Upgradable is Controllable {
     }
 
     function setExternalDependencies(address[] _newDependencies) public onlyOwner {
+        _setControllers(externalDependencies, false); // Reset old controllers
         externalDependencies = _newDependencies;
-        _setControllers(_newDependencies);
+        _setControllers(_newDependencies, true); // Add new controllers
     }
 }
