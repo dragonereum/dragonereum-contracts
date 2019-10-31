@@ -152,8 +152,8 @@ contract CoreController is Upgradable {
         address[10] users
     ) {
         core.updateLeaderboardRewardTime();
-        uint256 _hatchingPrice = treasury.hatchingPrice();
-        uint256[10] memory _rewards = core.getLeaderboardRewards(_hatchingPrice);
+        uint256 _remainingGold = treasury.remainingGold();
+        uint256[10] memory _rewards = core.getLeaderboardRewards(_remainingGold);
 
         dragons = core.getDragonsFromLeaderboard();
         uint8 i;
@@ -162,7 +162,6 @@ contract CoreController is Upgradable {
             users[i] = getter.ownerOfDragon(dragons[i]);
         }
 
-        uint256 _remainingGold = treasury.remainingGold();
         uint256 _reward;
         for (i = 0; i < users.length; i++) {
             if (_remainingGold == 0) break;
