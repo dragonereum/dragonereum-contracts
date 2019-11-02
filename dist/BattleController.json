@@ -2,25 +2,6 @@
   "contractName": "BattleController",
   "abi": [
     {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_attackerId",
-          "type": "uint256"
-        }
-      ],
-      "name": "matchOpponents",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256[6]"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
       "constant": false,
       "inputs": [
         {
@@ -32,35 +13,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_id",
-          "type": "uint256"
-        }
-      ],
-      "name": "resetDragonBuffs",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_newDependencies",
-          "type": "address[]"
-        }
-      ],
-      "name": "setInternalDependencies",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x65fc1253"
     },
     {
       "constant": true,
@@ -74,7 +28,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x8da5cb5b"
     },
     {
       "constant": true,
@@ -88,7 +43,56 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0xb75c4f80"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getExternalDependencies",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xe6458f6e"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xf2fde38b"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event",
+      "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
     },
     {
       "constant": false,
@@ -127,52 +131,58 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0xd71c9cf3"
     },
     {
       "constant": true,
-      "inputs": [],
-      "name": "getExternalDependencies",
+      "inputs": [
+        {
+          "name": "_attackerId",
+          "type": "uint256"
+        }
+      ],
+      "name": "matchOpponents",
       "outputs": [
         {
           "name": "",
-          "type": "address[]"
+          "type": "uint256[6]"
         }
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x5cc53bc7"
     },
     {
       "constant": false,
       "inputs": [
         {
-          "name": "newOwner",
-          "type": "address"
+          "name": "_id",
+          "type": "uint256"
         }
       ],
-      "name": "transferOwnership",
+      "name": "resetDragonBuffs",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x68662301"
     },
     {
-      "anonymous": false,
+      "constant": false,
       "inputs": [
         {
-          "indexed": true,
-          "name": "previousOwner",
-          "type": "address"
-        },
-        {
-          "indexed": true,
-          "name": "newOwner",
-          "type": "address"
+          "name": "_newDependencies",
+          "type": "address[]"
         }
       ],
-      "name": "OwnershipTransferred",
-      "type": "event"
+      "name": "setInternalDependencies",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x69c0ad93"
     }
   ],
   "networks": {
