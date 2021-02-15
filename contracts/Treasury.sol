@@ -11,7 +11,7 @@ contract Treasury is Upgradable {
     Gold goldTokens;
 
     uint256 constant GOLD_DECIMALS = 10 ** 18;
-    uint256 constant public hatchingPrice = 1000 * GOLD_DECIMALS;
+    uint256 constant public hatchingPrice = 2048 * GOLD_DECIMALS;
 
     function giveGold(address _user, uint256 _amount) external onlyController {
         goldTokens.transfer(_user, _amount);

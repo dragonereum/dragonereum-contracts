@@ -202,14 +202,14 @@ contract BattleController is Upgradable {
     ) internal pure returns (uint256) {
         uint32 _factor;
 
-        if (_dragonsAmount < 3000) _factor = 2000000; // Hydrogen Eon
-        else if (_dragonsAmount < 6000) _factor = 1000000; // Helium Eon
-        else if (_dragonsAmount < 9000) _factor = 500000; // Carbon Eon
-        else if (_dragonsAmount < 12000) _factor = 250000; // Oxygen Eon
-        else if (_dragonsAmount < 15000) _factor = 125000; // Silicon Eon
-        else if (_dragonsAmount < 18000) _factor = 62500; // Titanium Eon
-        else if (_dragonsAmount < 21000) _factor = 31250; // Silver Eon
-        else _factor = 15625; // Gold Eon
+        if (_dragonsAmount < 128) _factor = 1000000; // Hydrogen Eon
+        else if (_dragonsAmount < 256) _factor = 500000; // Helium Eon
+        else if (_dragonsAmount < 512) _factor = 250000; // Carbon Eon
+        else if (_dragonsAmount < 1024) _factor = 125000; // Oxygen Eon
+        else if (_dragonsAmount < 2048) _factor = 62500; // Silicon Eon
+        else if (_dragonsAmount < 4096) _factor = 31250; // Titanium Eon
+        else if (_dragonsAmount < 8192) _factor = 15625; // Silver Eon
+        else _factor = 8192; // Gold Eon
 
         return _hatchingPrice.mul(_factor).div(MAX_GOLD_REWARD_MULTIPLIER);
     }

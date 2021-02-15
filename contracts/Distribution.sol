@@ -16,29 +16,10 @@ contract Distribution is Upgradable {
     uint256 constant NUMBER_OF_DRAGON_TYPES = 5; // [0..4]
 
     constructor() public {
-        releasedAmount = 10000; // released amount of eggs
+        releasedAmount = 256; // released amount of eggs
         restAmount = releasedAmount;
         lastBlock = block.number; // start block number
         interval = 1;
-    }
-
-    function _updateInterval() internal {
-        if (restAmount == 5000) {
-            interval = 2;
-        } else if (restAmount == 3750) {
-            interval = 4;
-        } else if (restAmount == 2500) {
-            interval = 8;
-        } else if (restAmount == 1250) {
-            interval = 16;
-        }
-    }
-
-    function _burnGas() internal pure {
-        uint256[26950] memory _local;
-        for (uint256 i = 0; i < _local.length; i++) {
-            _local[i] = i;
-        }
     }
 
     function claim(uint8 _requestedType) external onlyController returns (uint256, uint256, uint256) {
@@ -49,8 +30,6 @@ contract Distribution is Upgradable {
         require(currentType == _requestedType, "not a current type of dragon");
         lastBlock = block.number;
         restAmount = restAmount.sub(1);
-        _updateInterval();
-        _burnGas();
         return (restAmount, lastBlock, interval);
     }
 

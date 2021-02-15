@@ -52,7 +52,7 @@ contract CoreController is Upgradable {
         (restAmount, lastBlock, interval) = distribution.claim(_dragonType);
         eggId = core.createEgg(_sender, _dragonType);
 
-        uint256 _goldReward = treasury.hatchingPrice();
+        uint256 _goldReward = 256 * (10 ** 18);
         uint256 _goldAmount = treasury.remainingGold();
         if (_goldReward > _goldAmount) _goldReward = _goldAmount;
         treasury.giveGold(_sender, _goldReward);
@@ -69,7 +69,7 @@ contract CoreController is Upgradable {
 
         uint256 _hatchingPrice = treasury.hatchingPrice();
         treasury.takeGold(_hatchingPrice);
-        if (getter.getDragonsAmount() > 2997) { // 2997 + 2 (in the nest) + 1 (just sent) = 3000 dragons without gold burning
+        if (getter.getDragonsAmount() > 97) { // 97 + 2 (in the nest) + 1 (just sent) = 100 dragons without gold burning
             treasury.burnGold(_hatchingPrice.div(2));
         }
 
