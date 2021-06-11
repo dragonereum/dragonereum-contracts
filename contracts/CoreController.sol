@@ -40,18 +40,21 @@ contract CoreController is Upgradable {
         require(_isDragonOwner(_user, _id), "not an owner");
     }
 
-    function claimEgg(
+    function buyGenesisEgg(
         address _sender,
-        uint8 _dragonType
+        uint8 _dragonType,
+        uint256 _value
     ) external onlyController returns (
         uint256 eggId,
         uint256 restAmount,
         uint256 lastBlock,
-        uint256 interval
+        uint256 interval,
+        uint256 price
     ) {
-        (restAmount, lastBlock, interval) = distribution.claim(_dragonType);
+        (restAmount, lastBlock, interval, price) = distribution.buy(_dragonType, _value);
         eggId = core.createEgg(_sender, _dragonType);
 
+        // TODO: Move to params
         uint256 _goldReward = 256 * (10 ** 18);
         uint256 _goldAmount = treasury.remainingGold();
         if (_goldReward > _goldAmount) _goldReward = _goldAmount;

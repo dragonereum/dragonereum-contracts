@@ -4,7 +4,7 @@ import "./Common/Upgradable.sol";
 
 
 contract Events is Upgradable {
-    event EggClaimed(address indexed user, uint256 indexed id);
+    event GenesisEggBought(address indexed user, uint256 indexed id, uint256 price);
     event EggSentToNest(address indexed user, uint256 indexed id);
     event EggHatched(address indexed user, uint256 indexed dragonId, uint256 indexed eggId);
     event DragonUpgraded(uint256 indexed id);
@@ -127,11 +127,12 @@ contract Events is Upgradable {
     );
     event LeaderboardRewardsDistributed(uint256[10] dragons, address[10] users);
 
-    function emitEggClaimed(
+    function emitGenesisEggBought(
         address _user,
-        uint256 _id
+        uint256 _id,
+        uint256 _price
     ) external onlyController {
-        emit EggClaimed(_user, _id);
+        emit GenesisEggBought(_user, _id, _price);
     }
 
     function emitEggSentToNest(

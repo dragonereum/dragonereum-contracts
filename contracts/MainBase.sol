@@ -14,15 +14,24 @@ contract MainBase is Pausable, Upgradable, HumanOriented {
     User user;
     Events events;
 
-    function claimEgg(uint8 _dragonType) external onlyHuman whenNotPaused {
+    // TODO: Transfer value to the multisig
+    // address(TBD).transfer(msg.value);
+    function buyGenesisEgg(uint8 _dragonType) external payable onlyHuman whenNotPaused {
         (
             uint256 _eggId,
             uint256 _restAmount,
             uint256 _lastBlock,
-            uint256 _interval
-        ) = coreController.claimEgg(msg.sender, _dragonType);
+            uint256 _interval,
+            uint256 _price
+        ) = coreController.buyGenesisEgg(msg.sender, _dragonType, msg.value);
 
-        events.emitEggClaimed(msg.sender, _eggId);
+        uint256 excess = msg.value - _price;
+
+        if (excess > 0) {
+            msg.sender.transfer(excess);
+        }
+
+        events.emitGenesisEggBought(msg.sender, _eggId, _price);
         events.emitDistributionUpdated(_restAmount, _lastBlock, _interval);
     }
 
