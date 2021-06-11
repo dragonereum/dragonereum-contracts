@@ -40,10 +40,10 @@ contract Distribution is Upgradable {
         );
     }
 
-    function buy(uint8 _requestedType, uint256 _value) external payable onlyController returns (uint256, uint256, uint256) {
+    function buy(uint8 _requestedType, uint256 _value) external payable onlyController returns (uint256, uint256, uint256, uint256) {
         require(restAmount > 0, "eggs are over");
         require(lastBlock.add(interval) <= block.number, "too early");
-        price = getCurrentPrice();
+        uint256 price = getCurrentPrice();
         require(price <= _value, "not enough ether");
 
         uint256 _index = releasedAmount.sub(restAmount); // next egg index
@@ -54,7 +54,7 @@ contract Distribution is Upgradable {
         maxPrice = price.mul(PRICE_INCREASE).div(PRICE_MULTIPLIER);
         lastBlock = block.number;
 
-        return (restAmount, lastBlock, interval);
+        return (restAmount, lastBlock, interval, price);
     }
 
     function getCurrentPrice() public view returns (uint256) {
