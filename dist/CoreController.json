@@ -13,8 +13,7 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0x65fc1253"
+      "type": "function"
     },
     {
       "constant": true,
@@ -28,8 +27,7 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function",
-      "signature": "0x8da5cb5b"
+      "type": "function"
     },
     {
       "constant": true,
@@ -43,8 +41,7 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function",
-      "signature": "0xb75c4f80"
+      "type": "function"
     },
     {
       "constant": true,
@@ -58,8 +55,7 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function",
-      "signature": "0xe6458f6e"
+      "type": "function"
     },
     {
       "constant": false,
@@ -73,8 +69,7 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0xf2fde38b"
+      "type": "function"
     },
     {
       "anonymous": false,
@@ -91,8 +86,7 @@
         }
       ],
       "name": "OwnershipTransferred",
-      "type": "event",
-      "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+      "type": "event"
     },
     {
       "constant": false,
@@ -104,9 +98,13 @@
         {
           "name": "_dragonType",
           "type": "uint8"
+        },
+        {
+          "name": "_value",
+          "type": "uint256"
         }
       ],
-      "name": "claimEgg",
+      "name": "buyGenesisEgg",
       "outputs": [
         {
           "name": "eggId",
@@ -123,12 +121,15 @@
         {
           "name": "interval",
           "type": "uint256"
+        },
+        {
+          "name": "price",
+          "type": "uint256"
         }
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0x4039eee3"
+      "type": "function"
     },
     {
       "constant": false,
@@ -163,8 +164,7 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0x4638ac57"
+      "type": "function"
     },
     {
       "constant": false,
@@ -191,8 +191,7 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0x12e3fe10"
+      "type": "function"
     },
     {
       "constant": false,
@@ -214,8 +213,7 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0xd4df4dd6"
+      "type": "function"
     },
     {
       "constant": false,
@@ -241,8 +239,7 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0x274ddb50"
+      "type": "function"
     },
     {
       "constant": false,
@@ -269,8 +266,7 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0x2382cd97"
+      "type": "function"
     },
     {
       "constant": false,
@@ -292,8 +288,7 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0x655cf8e9"
+      "type": "function"
     },
     {
       "constant": false,
@@ -315,8 +310,7 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0x978ee4e0"
+      "type": "function"
     },
     {
       "constant": false,
@@ -334,8 +328,7 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0x5f9ac1a5"
+      "type": "function"
     },
     {
       "constant": false,
@@ -349,12 +342,11 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0x69c0ad93"
+      "type": "function"
     }
   ],
   "networks": {
-    "1": {
+    "137": {
       "events": {
         "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
           "anonymous": false,
@@ -371,14 +363,37 @@
             }
           ],
           "name": "OwnershipTransferred",
-          "type": "event",
-          "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+          "type": "event"
         }
       },
       "links": {},
-      "address": "0x9b8A708Fa6c9EA0ff7B6E9A25C195117460C20ed",
-      "transactionHash": "0xbfc5f9e2d2b9cde7eccb1c0a2ba61cd3f7ac890095783c7c979456da06ca2503"
+      "address": "0x2D2BdbE7E8071B4476EAd55CCcD755952ed77948",
+      "transactionHash": "0xb1adc7bf6a5f6aaa42570e898768d3274b2f17b43783b0e6a2fcf1c4abbc8579"
+    },
+    "80001": {
+      "events": {
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xF6ddB1D4718818D0fddAcf88C2F3c51e71271ff2",
+      "transactionHash": "0x437d27a1ce7d15a63ca8f9fff6367307a9ab29c527a18c4c288198d85af26889"
     }
   },
-  "updatedAt": "2018-11-28T21:04:49.148Z"
+  "updatedAt": "2021-06-16T20:46:09.332Z"
 }

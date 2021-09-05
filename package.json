@@ -11,6 +11,7 @@
     "url": "https://github.com/dragonereum/dragonereum-contracts/issues"
   },
   "devDependencies": {
+    "@truffle/hdwallet-provider": "1.4.0",
     "graphlib": "^2.1.7",
     "dotenv": "^8.0.0",
     "husky": "^2.4.1",

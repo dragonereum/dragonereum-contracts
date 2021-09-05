@@ -13,8 +13,7 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0x65fc1253"
+      "type": "function"
     },
     {
       "constant": false,
@@ -28,8 +27,7 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0x69c0ad93"
+      "type": "function"
     },
     {
       "constant": true,
@@ -43,8 +41,7 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function",
-      "signature": "0x8da5cb5b"
+      "type": "function"
     },
     {
       "constant": true,
@@ -58,8 +55,7 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function",
-      "signature": "0xb75c4f80"
+      "type": "function"
     },
     {
       "constant": true,
@@ -73,8 +69,7 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function",
-      "signature": "0xe6458f6e"
+      "type": "function"
     },
     {
       "constant": false,
@@ -88,15 +83,13 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0xf2fde38b"
+      "type": "function"
     },
     {
       "inputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "constructor",
-      "signature": "constructor"
+      "type": "constructor"
     },
     {
       "anonymous": false,
@@ -113,8 +106,7 @@
         }
       ],
       "name": "OwnershipTransferred",
-      "type": "event",
-      "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+      "type": "event"
     },
     {
       "constant": false,
@@ -132,8 +124,7 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0xcebab53d"
+      "type": "function"
     },
     {
       "constant": true,
@@ -147,8 +138,7 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function",
-      "signature": "0x80deece5"
+      "type": "function"
     },
     {
       "constant": false,
@@ -157,14 +147,13 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0xf146da5b"
+      "type": "function"
     },
     {
       "constant": true,
       "inputs": [
         {
-          "name": "_hatchingPrice",
+          "name": "_remainingGold",
           "type": "uint256"
         }
       ],
@@ -177,8 +166,7 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function",
-      "signature": "0xc0d8012c"
+      "type": "function"
     },
     {
       "constant": true,
@@ -196,12 +184,11 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function",
-      "signature": "0x430fe9c1"
+      "type": "function"
     }
   ],
   "networks": {
-    "1": {
+    "137": {
       "events": {
         "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
           "anonymous": false,
@@ -218,14 +205,37 @@
             }
           ],
           "name": "OwnershipTransferred",
-          "type": "event",
-          "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+          "type": "event"
         }
       },
       "links": {},
-      "address": "0x04B47AD8BcD1c4913A4093FFF30A4AA2bCDB9202",
-      "transactionHash": "0xe8f4554a1bea3955b17a6a5e695e32d8b45f5d3739773124eeff8b169f7e3519"
+      "address": "0xc450Ad72EDEf705B3A084Cee6a309ceBBbD3f8c2",
+      "transactionHash": "0xf5d8a845ab749fbb857581f8d1311454ad8a22e9adb7f69e9eb1df956a2f39d7"
+    },
+    "80001": {
+      "events": {
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x7E00EF0d6DE56A2B2008643F380fb010Beb9C056",
+      "transactionHash": "0xfcff5c094c44db62a0590e82d418dbd8a3057d44227ba102fbe1be6272893c60"
     }
   },
-  "updatedAt": "2018-11-28T21:04:49.069Z"
+  "updatedAt": "2021-06-16T20:46:09.438Z"
 }

@@ -5,60 +5,11 @@
       "constant": false,
       "inputs": [
         {
-          "name": "_user",
-          "type": "address"
-        },
-        {
-          "name": "_challengeId",
-          "type": "uint256"
-        },
-        {
-          "name": "_willCreatorWin",
-          "type": "bool"
-        },
-        {
-          "name": "_value",
-          "type": "uint256"
-        },
-        {
-          "name": "_ethValue",
-          "type": "uint256"
-        }
-      ],
-      "name": "placeBet",
-      "outputs": [
-        {
-          "name": "isGold",
-          "type": "bool"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
           "name": "_newDependencies",
           "type": "address[]"
         }
       ],
       "name": "setExternalDependencies",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_newDependencies",
-          "type": "address[]"
-        }
-      ],
-      "name": "setInternalDependencies",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
@@ -110,6 +61,77 @@
       "constant": false,
       "inputs": [
         {
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "fallback"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "name": "_challengeId",
+          "type": "uint256"
+        },
+        {
+          "name": "_willCreatorWin",
+          "type": "bool"
+        },
+        {
+          "name": "_value",
+          "type": "uint256"
+        },
+        {
+          "name": "_ethValue",
+          "type": "uint256"
+        }
+      ],
+      "name": "placeBet",
+      "outputs": [
+        {
+          "name": "isGold",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
           "name": "_user",
           "type": "address"
         },
@@ -119,20 +141,6 @@
         }
       ],
       "name": "removeBet",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "newOwner",
-          "type": "address"
-        }
-      ],
-      "name": "transferOwnership",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
@@ -166,30 +174,22 @@
       "type": "function"
     },
     {
-      "payable": true,
-      "stateMutability": "payable",
-      "type": "fallback"
-    },
-    {
-      "anonymous": false,
+      "constant": false,
       "inputs": [
         {
-          "indexed": true,
-          "name": "previousOwner",
-          "type": "address"
-        },
-        {
-          "indexed": true,
-          "name": "newOwner",
-          "type": "address"
+          "name": "_newDependencies",
+          "type": "address[]"
         }
       ],
-      "name": "OwnershipTransferred",
-      "type": "event"
+      "name": "setInternalDependencies",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
     }
   ],
   "networks": {
-    "1": {
+    "137": {
       "events": {
         "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
           "anonymous": false,
@@ -206,14 +206,37 @@
             }
           ],
           "name": "OwnershipTransferred",
-          "type": "event",
-          "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+          "type": "event"
         }
       },
       "links": {},
-      "address": "0x310526b4e4b78705EcAf644F01FB7631f3b77CB1",
-      "transactionHash": "0xd5e40ab91b27d445dea48514e2183900badbdf9beca3b3446833f3f3aa440d65"
+      "address": "0xaAd26E3A2F3965F7449a5133aDdc4250Fd6Fe63c",
+      "transactionHash": "0x6333f3ef2786560c4af4c69509835d18bf936d55db923ba28ab0172cd082bef2"
+    },
+    "80001": {
+      "events": {
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x134e6333313b1Cb2aCF822e3F5a3fC7Ee912Bf57",
+      "transactionHash": "0xb10986a93341762c92131309e890dad9cf54291dfe3533b52820e342d702670a"
     }
   },
-  "updatedAt": "2018-11-28T21:04:49.204Z"
+  "updatedAt": "2021-06-16T20:46:09.676Z"
 }

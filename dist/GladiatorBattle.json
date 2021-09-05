@@ -5,73 +5,6 @@
       "constant": false,
       "inputs": [
         {
-          "name": "_user",
-          "type": "address"
-        },
-        {
-          "name": "_challengeId",
-          "type": "uint256"
-        }
-      ],
-      "name": "addTimeForOpponentSelect",
-      "outputs": [
-        {
-          "name": "newAutoSelectBlock",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_user",
-          "type": "address"
-        },
-        {
-          "name": "_challengeId",
-          "type": "uint256"
-        }
-      ],
-      "name": "returnBet",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_user",
-          "type": "address"
-        },
-        {
-          "name": "_challengeId",
-          "type": "uint256"
-        },
-        {
-          "name": "_applicantId",
-          "type": "uint256"
-        },
-        {
-          "name": "_applicantsHash",
-          "type": "bytes32"
-        }
-      ],
-      "name": "chooseOpponent",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
           "name": "_newDependencies",
           "type": "address[]"
         }
@@ -83,39 +16,100 @@
       "type": "function"
     },
     {
-      "constant": false,
-      "inputs": [
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
         {
-          "name": "_newDependencies",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getInternalDependencies",
+      "outputs": [
+        {
+          "name": "",
           "type": "address[]"
         }
       ],
-      "name": "setInternalDependencies",
-      "outputs": [],
       "payable": false,
-      "stateMutability": "nonpayable",
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getExternalDependencies",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
       "type": "function"
     },
     {
       "constant": false,
       "inputs": [
         {
-          "name": "_user",
+          "name": "newOwner",
           "type": "address"
-        },
-        {
-          "name": "_challengeId",
-          "type": "uint256"
-        },
-        {
-          "name": "_applicantsHash",
-          "type": "bytes32"
         }
       ],
-      "name": "cancel",
+      "name": "transferOwnership",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "fallback"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_dragonId",
+          "type": "uint256"
+        }
+      ],
+      "name": "isDragonChallenging",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -162,17 +156,82 @@
       "type": "function"
     },
     {
-      "constant": true,
-      "inputs": [],
-      "name": "owner",
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_challengeId",
+          "type": "uint256"
+        },
+        {
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "name": "_dragonId",
+          "type": "uint256"
+        },
+        {
+          "name": "_tactics",
+          "type": "uint8[2]"
+        },
+        {
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "apply",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "name": "_challengeId",
+          "type": "uint256"
+        },
+        {
+          "name": "_applicantId",
+          "type": "uint256"
+        },
+        {
+          "name": "_applicantsHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "chooseOpponent",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_challengeId",
+          "type": "uint256"
+        },
+        {
+          "name": "_applicantsHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "autoSelectOpponent",
       "outputs": [
         {
-          "name": "",
-          "type": "address"
+          "name": "applicantId",
+          "type": "uint256"
         }
       ],
       "payable": false,
-      "stateMutability": "view",
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
@@ -210,6 +269,10 @@
       "constant": false,
       "inputs": [
         {
+          "name": "_user",
+          "type": "address"
+        },
+        {
           "name": "_challengeId",
           "type": "uint256"
         },
@@ -218,104 +281,49 @@
           "type": "bytes32"
         }
       ],
-      "name": "autoSelectOpponent",
-      "outputs": [
-        {
-          "name": "applicantId",
-          "type": "uint256"
-        }
-      ],
+      "name": "cancel",
+      "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
     },
     {
-      "constant": true,
-      "inputs": [],
-      "name": "getInternalDependencies",
-      "outputs": [
-        {
-          "name": "",
-          "type": "address[]"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_dragonId",
-          "type": "uint256"
-        }
-      ],
-      "name": "isDragonChallenging",
-      "outputs": [
-        {
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
       "constant": false,
       "inputs": [
-        {
-          "name": "_challengeId",
-          "type": "uint256"
-        },
         {
           "name": "_user",
           "type": "address"
         },
         {
-          "name": "_dragonId",
-          "type": "uint256"
-        },
-        {
-          "name": "_tactics",
-          "type": "uint8[2]"
-        },
-        {
-          "name": "_value",
+          "name": "_challengeId",
           "type": "uint256"
         }
       ],
-      "name": "apply",
+      "name": "returnBet",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
     },
     {
-      "constant": true,
-      "inputs": [],
-      "name": "getExternalDependencies",
-      "outputs": [
-        {
-          "name": "",
-          "type": "address[]"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
       "constant": false,
       "inputs": [
         {
-          "name": "newOwner",
+          "name": "_user",
           "type": "address"
+        },
+        {
+          "name": "_challengeId",
+          "type": "uint256"
         }
       ],
-      "name": "transferOwnership",
-      "outputs": [],
+      "name": "addTimeForOpponentSelect",
+      "outputs": [
+        {
+          "name": "newAutoSelectBlock",
+          "type": "uint256"
+        }
+      ],
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
@@ -340,30 +348,22 @@
       "type": "function"
     },
     {
-      "payable": true,
-      "stateMutability": "payable",
-      "type": "fallback"
-    },
-    {
-      "anonymous": false,
+      "constant": false,
       "inputs": [
         {
-          "indexed": true,
-          "name": "previousOwner",
-          "type": "address"
-        },
-        {
-          "indexed": true,
-          "name": "newOwner",
-          "type": "address"
+          "name": "_newDependencies",
+          "type": "address[]"
         }
       ],
-      "name": "OwnershipTransferred",
-      "type": "event"
+      "name": "setInternalDependencies",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
     }
   ],
   "networks": {
-    "1": {
+    "137": {
       "events": {
         "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
           "anonymous": false,
@@ -380,14 +380,37 @@
             }
           ],
           "name": "OwnershipTransferred",
-          "type": "event",
-          "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+          "type": "event"
         }
       },
       "links": {},
-      "address": "0xC0fC330729cD77E6c403DA011EF52AAc7b00B7D2",
-      "transactionHash": "0x3f8f2a17a71b8eeb94ec8e4b641c1d839cc8792300f4b26bb8dcd2c013979e5d"
+      "address": "0x0665F8Eb5d86833436adaFfA337Bf5cc776aF1B3",
+      "transactionHash": "0xa014f48f85865007582018630807cb9e56bd7e743c208c07577501da35a779f8"
+    },
+    "80001": {
+      "events": {
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x9FDB06B32366F5957Df97b18a061ad02E9Ae89a0",
+      "transactionHash": "0xff3e3a7d42e85d78af53b3450f17d3f1ece63be21f9c545bb7a4ad386e5abfb0"
     }
   },
-  "updatedAt": "2018-11-28T21:04:49.486Z"
+  "updatedAt": "2021-06-16T20:46:09.628Z"
 }
