@@ -14,7 +14,7 @@
     "graphlib": "^2.1.7",
     "dotenv": "^8.0.0",
     "husky": "^2.4.1",
-    "lint-staged": "^8.2.1",
+    "lint-staged": "^13.1.0",
     "solium": "^1.2.4",
     "truffle": "^5.0.24",
     "truffle-hdwallet-provider": "^1.0.11"
